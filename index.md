@@ -1,7 +1,6 @@
 ## 凉宫西辰的网站
 
 ***
-
 > + 小游戏
 >   1. [飞翔的小鸟](http://www.hsianglee.top/fly/)<br />
 >   2. [矩形躲避](http://www.hsianglee.top/line/)<br />
@@ -13,9 +12,7 @@
 >   3. [xfc](http://www.hsianglee.top/bootstrap/xfc/)
 >   4. [我的博客](http://www.hsianglee.top/blog/)<br />
 > + [小项目](http://www.hsianglee.top/fgm/)<br />
-<br /><br />
-
----
 <br />
+---
 ###### Email: 1547600955@qq.com
 #### 欢迎访问

@@ -11,3 +11,8 @@
 >   3. [xfc](http://www.hsianglee.top/bootstrap/xfc/)
 >   4. [我的博客](http://www.hsianglee.top/blog/)<br />
 > + [小项目](http://www.hsianglee.top/fgm/)<br />
+> + 组件
+> + [弹出层](http://www.hsianglee.top/component/alert.html)<br />
+> + [加载动画](http://www.hsianglee.top/component/load.html)<br />
+> + [导航条](http://www.hsianglee.top/component/nav.html)<br />
+> + [滚动条](http://www.hsianglee.top/component/scroll.html)<br />
