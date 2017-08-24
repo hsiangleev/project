@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>单一按钮显示/隐藏一播放列表收缩展开</title>
+	<style>
+		.box{
+			width: 300px;
+			border: 1px solid #aaa;
+			margin: 50px auto;
+			background-color: #e9edf2;
+		}
+		.top{
+			width: 100%;
+			height: 40px;
+			line-height: 40px;
+			background-color: #ced3d7;
+			border: 1px solid #ccc;
+			box-sizing: border-box;
+			padding-left: 10px;
+			border-color: #fff #e9edf2;
+		}
+		.top strong{
+			float: right;
+			margin-right: 10px;
+		}
+		ul{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			display: none;
+		}
+		li{
+			height: 30px;
+			line-height: 30px;
+			padding: 0 10px;
+			font-size: 12px;
+			color: #666;
+			cursor: pointer;
+		}
+		li:hover{
+			background-color: #ddd;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="top">播放列表...<strong>▲</strong></div>
+		<ul>
+			<li>玩家之徒 - 蔡依林</li>
+			<li>原谅我就是这样的女生 - 戴佩妮</li>
+			<li>猜不透 - 丁当</li>
+			<li>自导自演 - 周杰伦</li>
+			<li>浪漫窝 - 弦子</li>
+			<li>流年 - 王菲</li>
+		</ul>
+	</div>
+	<script>
+		var top=document.getElementsByClassName("top")[0];
+		var strong=document.getElementsByTagName("strong")[0];
+		var oUl=document.getElementsByTagName("ul")[0];
+		var onOff=true;
+		top.onclick=function () {
+
+			if(onOff){
+				oUl.style.display="block";
+				strong.innerHTML="▼";
+				onOff=false;
+			}else{
+				oUl.style.display="none";
+				strong.innerHTML="▲";
+				onOff=true;
+
+			}
+		}	
+	</script>
+</body>
+</html>

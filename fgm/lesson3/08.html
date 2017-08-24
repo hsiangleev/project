@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>简易网页时钟</title>
+	<style>
+		.box{
+			width: 400px;
+			height: 150px;
+			background-color: #202020;
+			margin: 100px auto;
+			color: #fff;
+			text-align: center;
+			line-height: 150px;
+		}
+		span{
+			margin: 0 20px;
+			display: inline-block;
+			width: 50px;
+			height: 30px;
+			background-color: #fbfbfb;
+			line-height: 30px;
+			color: #333;
+			font-size: 22px;
+			font-weight: 700;
+			border: 2px solid #b4b4b4;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<span>0</span>时
+		<span>0</span>分
+		<span>0</span>秒
+	</div>
+	<script>
+		var span=document.getElementsByTagName("span");
+		getMyDay ();
+		setInterval(function () {
+			getMyDay();
+		}, 1000);
+		function getMyDay () {
+			var day=new Date();
+			var h=day.getHours();
+			var m=day.getMinutes();
+			var s=day.getSeconds();
+			h=h<10?"0"+h:h;
+			m=m<10?"0"+m:m;
+			s=s<10?("0"+s):s;
+			span[0].innerHTML=h;
+			span[1].innerHTML=m;
+			span[2].innerHTML=s;
+		}
+	</script>
+</body>
+</html>

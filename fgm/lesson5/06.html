@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自定义右键菜单</title>
+	<style>
+		p{
+			display: block;
+			margin: 0 auto;
+			font-size: 12px;
+			width: 300px;
+		}
+		ul{
+			position: absolute;
+			top: 0;
+			left: 0;
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			width: 100px;
+			display: none;
+			border: 1px solid #ccc;
+		}
+		li{
+			height: 25px;
+			font-size: 14px;
+			line-height: 25px;
+			cursor: default;
+		}
+		li#line{
+			height: 1px;
+			background-color: #ddd;
+		}
+		li.active{
+			background-color: #eee;
+		}
+	</style>
+</head>
+<body>
+	<p>自定义右键菜单，请在页面点击右键查看效果。</p>
+	<ul>
+		<li class="active">复制</li>
+		<li>剪贴</li>
+		<li id="line"></li>
+		<li>关闭</li>
+	</ul>
+	<script>
+		var ul=document.getElementsByTagName("ul")[0];
+		var ali=ul.getElementsByTagName("li");
+		document.oncontextmenu=function (e) {
+			e=event || window.event;
+			ul.style="display:block; top:"+e.clientY+"px;left:"+e.clientX+"px;";
+			return false;
+		}
+		for (var i = 0; i < ali.length; i++) {
+			ali[i].onmouseenter=function () {
+				for(var j=0;j<ali.length;j++){
+					ali[j].classList.remove("active");
+				}
+				this.classList.add("active");
+			}
+			ali[i].onclick=function (e) {
+				e=event || window.event;
+				e.stopPropagation();
+				ul.style.display="none";
+			}
+		}
+		document.onclick=function () {
+			ul.style.display="none";
+		}
+
+	</script>
+</body>
+</html>

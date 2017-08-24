@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>页面加载后累加，自加1</title>
+	<style>
+		.box{
+			width: 40px;
+			height: 30px;
+			background-color: #ddd;
+			line-height: 30px;
+			text-align: center;
+			font-size: 20px;
+			margin: 100px auto;
+			color: #c00;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		0
+	</div>
+	<script>
+		var box=document.getElementsByClassName("box")[0];
+		var n=0;
+		setInterval(function () {
+			n++;
+			box.innerHTML=n;
+		}, 1000);
+	</script>
+</body>
+</html>

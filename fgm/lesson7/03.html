@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>移动效果（按轨迹移动）</title>
+	<style>
+		div{
+			width: 70px;
+			height: 50px;
+			background: url("images/1.gif") no-repeat;
+			position: absolute;
+			top: 100px;
+		}
+	</style>
+</head>
+<body>
+	<button>根据鼠标点击位置移动</button>
+	<button>根据标鼠标轨迹移动</button>
+	<p>请点击按钮激活功能！</p>
+	<div></div>
+	<script src="../js/jquery-3.2.0.min.js"></script>
+	<script>
+		$(function () {
+			var oDiv=document.getElementsByTagName("div")[0];
+			$("button").eq(0).on("click",function (e) {
+				e=event || window.event;
+				e.stopPropagation();
+				$(this).text("根据鼠标点击位置移动(已激活)");
+				$("p").text("鼠标点击页面， 人物将移动至鼠标位置！");
+				$(document).on("click",function (e) {
+					e=event || window.event;
+					var x=e.clientX;
+					var y=e.clientY;
+					move(oDiv,{
+						"left":x,
+						"top":y
+					},function () {
+						oDiv.style.background = 'url("images/1.gif") no-repeat';
+					});
+				})
+			})
+			var arr=[];
+			var timer=null;
+			$("button").eq(1).on("click",function (e) {
+				e=event || window.event;
+				e.stopPropagation();
+				$(document).off("mousedown")
+				$(document).off("mousemove")
+				$(document).off("mouseup")
+				$(this).text("根据标鼠标轨迹移动(已激活)");
+				$("p").text("按住鼠标左键，在页面划动，人物将按照鼠标轨迹移动。");
+				$(document).on("mousedown",function (e) {
+					var e=event || window.event;
+					var x=e.clientX;
+					var y=e.clientY;
+					arr.push({"left":x,"top":y})
+					
+					$(document).on("mousemove",function (e) {
+						var e=event || window.event;
+						var x=e.clientX;
+						var y=e.clientY;
+						arr.push({"left":x,"top":y})
+						// console.log(arr)
+						return false;
+					})
+					
+					// arr=[];
+					// return false;
+				})
+				$(document).on("mouseup",function (e) {
+					$(document).off("mousemove");
+					e=event || window.event;
+					var x=e.clientX;
+					var y=e.clientY;
+					onOff=false;
+					arr.push({"left":x,"top":y});
+					
+					timer=setInterval(function () {
+						if(arr.length>0){
+							$("div").css({
+								"left": arr[0].left,
+								"top": arr[0].top,
+								"background": 'url("images/2.gif") no-repeat'
+							});
+							arr.shift();
+						}else{
+							$("div").css({
+								"background": 'url("images/1.gif") no-repeat'
+							});
+							clearInterval(timer);
+						}
+						// console.log(arr)
+					},20)
+					
+				})
+					
+				// console.log(arr[0]["left"])
+			})
+
+
+			function move(ele,json,endFn){
+				clearInterval(ele.timer);
+				ele.timer=setInterval(function(){
+					var bool=true;
+					for(var k in json){
+						var leader=parseInt(getStyle(ele,k))||0;
+						var step=(json[k]-leader)/10;
+						step=step>0?Math.ceil(step):Math.floor(step);
+						leader=leader+step;
+						ele.style[k]=leader+"px";
+						if(Math.abs(json[k]-leader)>Math.abs(step)){
+							bool=false;
+						}
+					}
+					//换背景
+					oDiv.style.background = 'url("images/2.gif") no-repeat';
+
+					if(bool){
+						for(var k in json){
+							ele.style[k]=json[k]+"px";
+						}
+						clearInterval(ele.timer);
+						endFn&&endFn();			//回调函数
+					}
+						
+				},30);
+			}
+			//兼容方法获取元素样式
+	        function getStyle(ele,attr){
+	            if(window.getComputedStyle){
+	                return window.getComputedStyle(ele,null)[attr];
+	            }
+	            return ele.currentStyle[attr];
+	        }
+		})
+	</script>
+</body>
+</html>

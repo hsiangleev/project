@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>用parseInt解析数字，并求和</title>
+	<style>
+		.box{
+			width: 400px;
+			height: 100px;
+			margin: 100px auto;
+		}
+		input{
+			width: 60px;
+			height: 30px;
+			line-height: 30px;
+			outline: none;
+			border: 1px solid #aaa;
+			background-color: #ddd;
+		}
+		span{
+			display: inline-block;
+			width: 40px;
+			height: 30px;
+			line-height: 30px;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<input type="text">+<input type="text">=<span>?</span><button>求和</button>
+	</div>
+	<script>
+		var inp=document.getElementsByTagName("input")
+		var span=document.getElementsByTagName("span")[0];
+		var btn=document.getElementsByTagName("button")[0];
+
+		btn.onclick=function () {
+			var a=inp[0].value;
+			var b=inp[1].value;
+			var c=parseInt(a)+parseInt(b);
+			if(a=="" || b==""){
+				alert("请输入内容");
+			}else if(isNaN(c)){
+				alert("请输入数字");
+			}
+			else{
+				span.innerHTML=c;
+			}
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>复选框（checkbox）全选/全不选/返选</title>
+	<style>
+		.box{
+			width: 150px;
+			border: 1px solid #000;
+			margin: 30px auto;
+			padding: 0 0 10px;
+		}
+		.top{
+			width: 90%;
+			height: 40px;
+			line-height: 40px;
+			margin: 0 10px;
+			box-sizing: border-box;
+			color: #666;
+			font-size: 12px;
+			cursor: pointer;
+			border-bottom: 1px solid #aaa;
+		}
+		.top span:last-child{
+			color: #c00;
+		}
+		.group{
+			padding: 0 10px;
+			height: 30px;
+			line-height: 30px;
+			font-size: 12px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="top">
+			<input type="checkbox" >
+			<span>全选</span>
+			<span>反选</span>
+		</div>
+		<div class="group">
+			<input type="checkbox">
+			<span>选项（一）</span>
+		</div>
+		<div class="group">
+			<input type="checkbox">
+			<span>选项（二）</span>
+		</div>
+		<div class="group">
+			<input type="checkbox">
+			<span>选项（三）</span>
+		</div>
+		<div class="group">
+			<input type="checkbox">
+			<span>选项（四）</span>
+		</div>
+		<div class="group">
+			<input type="checkbox">
+			<span>选项（五）</span>
+		</div>
+		<div class="group">
+			<input type="checkbox">
+			<span>选项（六）</span>
+		</div>
+		<div class="group">
+			<input type="checkbox">
+			<span>选项（七）</span>
+		</div>
+		<div class="group">
+			<input type="checkbox">
+			<span>选项（八）</span>
+		</div>
+		<div class="group">
+			<input type="checkbox">
+			<span>选项（九）</span>
+		</div>
+		<div class="group">
+			<input type="checkbox">
+			<span>选项（十）</span>
+		</div>
+	</div>
+	<script>
+		var span=document.getElementsByTagName("span");
+		var inp=document.getElementsByTagName("input");
+		//全选，全不选
+		inp[0].onclick=function () {
+			if(this.checked){
+				for (var i = 1; i < inp.length; i++) {
+				 	inp[i].checked=true;
+				 	span[0].innerHTML="全不选";
+				 } 
+			}else{
+				for (var i = 1; i < inp.length; i++) {
+				 	inp[i].checked=false;
+				 	span[0].innerHTML="全选";
+				 }
+			}
+		}
+		//反选
+		span[1].onclick=function () {
+			for (var i = 1; i < inp.length; i++) {
+				inp[i].checked=!inp[i].checked;		//反选
+			}
+			isChecked ();
+		}
+		//点击下面的，若全选中，则选中
+		for (var i = 1; i < inp.length; i++) {
+			inp[i].index=i;
+			inp[i].onclick=function () {
+				isChecked ();
+			}
+		}
+		//若下面的全选中，则选中,否则不选中
+		function isChecked () {
+			var onOff=0;
+			for (var j = 1; j < inp.length; j++) {
+				if(inp[j].checked==true){
+					onOff++;
+				}
+			}
+			if(onOff==inp.length-1){
+				inp[0].checked=true;
+				span[0].innerHTML="全不选";
+			}else{
+				inp[0].checked=false;
+				span[0].innerHTML="全选";
+			}
+		}
+	</script>
+</body>
+</html>

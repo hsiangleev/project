@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		html,
+		body{
+			margin: 0;
+			padding: 0;
+			font-size: 20px;
+		}
+		#c-load{
+			width: 10rem;
+			height: 10rem;
+			margin: 5rem auto;
+			box-sizing: border-box;
+			position: relative;
+		}
+		#c-load span{
+			position: absolute;
+			background-color: #000;
+		}
+		#c-load .top{
+			width: 100%;
+			height: 0.5rem;
+			top: 0;
+			left: 0;
+			animation: c-top 2s linear infinite;
+			animation-direction: alternate;
+		}
+		#c-load .right{
+			width: 0.5rem;
+			height: 100%;
+			top: 0;
+			right: 0;
+			animation: c-right 2s linear infinite;
+			animation-direction: alternate;
+		}
+		#c-load .bottom{
+			width: 100%;
+			height: 0.5rem;
+			right: 0;
+			bottom: 0;
+			animation: c-bottom 2s linear infinite;
+			animation-direction: alternate;
+		}
+		#c-load .left{
+			width: 0.5rem;
+			height: 100%;
+			bottom: 0;
+			left: 0;
+			animation: c-left 2s linear infinite;
+			animation-direction: alternate;
+		}
+		@keyframes c-top{
+			0%{
+				width: 0;
+				height: 0.5rem;
+			}
+			12.5%{
+				width: 100%;
+				height: 0.5rem;
+			}
+			100%{
+				width: 100%;
+				height: 0.5rem;
+			}
+		}
+		@keyframes c-right{
+			0%,
+			12.5%{
+				width: 0;
+				height: 0;
+			}
+			12.6%{
+				width: 0.5rem;
+				height: 0;
+			}
+			25%{
+				width: 0.5rem;
+				height: 100%;
+			}
+			100%{
+				width: 0.5rem;
+				height: 100%;
+			}
+		}
+		@keyframes c-bottom{
+			0%,
+			25%{
+				width: 0;
+				height: 0;
+			}
+			25.1%{
+				width: 0;
+				height: 0.5rem;
+			}
+			37.5%{
+				width: 100%;
+				height: 0.5rem;
+			}
+			100%{
+				width: 100%;
+				height: 0.5rem;
+			}
+		}
+		@keyframes c-left{
+			0%,
+			37.5%{
+				width: 0;
+				height: 0;
+			}
+			37.6%{
+				width: 0.5rem;
+				height: 0;
+			}
+			50%{
+				width: 0.5rem;
+				height: 100%;
+			}
+			100%{
+				width: 0.5rem;
+				height: 100%;
+			}
+		}
+		#c-red{
+			width: 3rem;
+			height: 9rem;
+			background-color: #C00;
+			position: absolute;
+			left: 0.5rem;
+			top: 0.5rem;
+			border-right: 0.5rem solid #000;
+			animation: c-red 2s linear infinite;
+			animation-direction: alternate;
+		}
+		@keyframes c-red{
+			0%,
+			50%{
+				width: 0;
+				height: 9rem;
+				border-right-color: transparent;
+				background-color: transparent;
+			}
+			50.1%{
+				border-right-color: #000;
+				background-color: red;
+			}
+			62.5%{
+				width: 3rem;
+				height: 9rem;
+			}
+			100%{
+				width: 3rem;
+				height: 9rem;
+			}
+		}
+		#c-orange{
+			width: 5.5rem;
+			height: 3rem;
+			position: absolute;
+			bottom: 0.5rem;
+			right: 0.5rem;
+			background-color: orange;
+			border-top: 0.5rem solid #000;
+			animation: c-orange 2s linear infinite;
+			animation-direction: alternate;
+		}
+		@keyframes c-orange{
+			0%,
+			62.5%{
+				width: 5.5rem;
+				height: 0;
+				border-top-color: transparent;
+				background-color: transparent;
+			}
+			62.6%{
+				border-top-color: #000;
+				background-color: orange;
+			}
+			75%{
+				width: 5.5rem;
+				height: 3rem;
+			}
+			100%{
+				width: 5.5rem;
+				height: 3rem;
+			}
+		}
+		#c-white{
+			width: 2rem;
+			height: 5.5rem;
+			position: absolute;
+			right: 0.5rem;
+			top: 0.5rem;
+			border-left: 0.5rem solid #000;
+			animation: c-white 2s linear infinite;
+			animation-direction: alternate;
+		}
+		@keyframes c-white{
+			0%,
+			75%{
+				width: 0;
+				height: 5.5rem;
+				border-left-color: transparent;
+				background-color: transparent;
+			}
+			75.1%{
+				border-left-color: #000;
+				background-color: #fff;
+			}
+			87.5%{
+				width: 2rem;
+				height: 5.5rem;
+			}
+			100%{
+				width: 2rem;
+				height: 5.5rem;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div id="c-load">
+		<span class="top"></span>
+		<span class="right"></span>
+		<span class="bottom"></span>
+		<span class="left"></span>
+		<div id="c-red"></div>
+		<div id="c-orange"></div>
+		<div id="c-white"></div>
+	</div>	
+</body>
+</html>

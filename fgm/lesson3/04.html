@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>输入两个数字，比较大小</title>
+	<style>
+		.box{
+			width: 400px;
+			height: 100px;
+			margin: 100px auto;
+		}
+		input{
+			width: 60px;
+			height: 30px;
+			line-height: 30px;
+			outline: none;
+			border: 1px solid #999;
+			background-color: #ddd;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<input type="text"> vs <input type="text"> <button>最大数是</button> <span>?</span>
+	</div>
+	<script>
+		var inp=document.getElementsByTagName("input");
+		var span=document.getElementsByTagName("span")[0];
+		var btn=document.getElementsByTagName("button")[0];
+		btn.onclick=function () {
+			var a=inp[0].value;
+			var b=inp[1].value;
+			
+			if(a=="" || b==""){
+				alert("请输入内容");
+			}else if(isNaN(a) || isNaN(b)){
+				alert("请输入数字");
+			}else{
+				c=a>b?a:b;
+				span.innerHTML=c;
+			}
+
+		}
+	</script>
+</body>
+</html>

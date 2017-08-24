@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		html,
+		body{
+			margin: 0;
+			padding: 0;
+		}
+		#cvs{
+			margin: 0 auto; 
+			display: block;
+			border: 1px solid #ccc;
+		}
+		.content{
+			width: 800px;
+			height: 600px;
+			position: absolute;
+			top: 0;
+			left: 50%;
+			margin-left: -400px;
+			border: 1px solid #ccc;
+		}
+		.over{
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: 10;
+			display: none;
+			background-color: rgba(160, 160, 160, 0.6);
+		}
+		.over h2{
+			width: 440px;
+			height: 40px;
+			position: absolute;
+			top: 25%;
+			left: 50%;
+			margin: 0;
+			padding: 0;
+			color: #f69;
+			margin-left: -220px;
+			line-height: 40px;
+			display: block;
+		}
+		button{
+			width: 100px;
+			height: 40px;
+			background-color: #69f;
+			outline: none;
+			position: absolute;
+			top: 200px;
+			left: 50%;
+			cursor: pointer;
+			margin-left: -50px;
+			font: 700 20px/30px "Microsoft Yahei";
+			color: #fff;
+		}
+		.begin{
+			width: 800px;
+			height: 600px;
+			top: 0;
+			left: 50%;
+			margin-left: -400px;
+			position: absolute;
+			z-index: 9;
+			background-color: rgba(60, 180, 180, 0.8);
+		}
+		.simple{
+			width: 90px;
+			position: absolute;
+			top: 40%;
+		}
+		ul{
+			margin: 0;
+			padding: 0;
+			position: absolute;
+			top: 260px;
+			left: 300px;
+			color: #333;
+			font-family: "FangSong","Arial","黑体","宋体",sans-serif;
+
+		}
+		i{
+			width: 80px;
+			height: 30px;
+			line-height: 30px;
+			color: #666;
+			font-size: 12px;
+			text-align: center;
+			cursor: pointer;
+			display: block;
+			margin: 5px 0;
+			background-color: #6f9;
+			font-style: normal;
+		}
+		i.current,
+		i:hover{
+			background-color: #f69;
+		}
+		.currentBox,
+		.willBox{
+			width: 200px;
+			height: 200px;
+			position: absolute;
+			top: 0;
+			z-index: 1;
+			left: 200px;
+			outline: 2px solid #69f;
+			display: none;
+			/* js中设置，可以修改图片 */
+			/* background: url("images/timg.jpg") no-repeat; */
+			/* background-size: 800px 600px; */
+			/* background-position: top 0px left -200px; */
+		}
+		.willBox{
+			z-index: 0;
+			outline: 2px solid #f69;
+		}
+		.currentCheckpoint{
+			width: 240px;
+			height: 60px;
+			line-height: 30px;
+			position: absolute;
+			top: 10px;
+			right: 0;
+			color: #f00;
+			font-size: 20px;
+			z-index: 2;
+			cursor: default;
+			-webkit-user-select:none;
+			-moz-user-select:none;
+			-ms-user-select:none;
+			user-select:none;
+			color: #f69;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="content">
+		<!-- 显示当前关卡 -->
+		<div class="currentCheckpoint">
+			当前关卡: <span>1</span><br>
+			难度系数: <span>简单(4*3)</span>
+		</div>
+		<!-- 当前移动的盒子 -->
+		<div class="currentBox"></div>
+		<!-- 需要替换的盒子 -->
+		<div class="willBox"></div>
+	</div>
+	<div class="begin">
+		<button>开始</button>
+		<div class="simple">
+			<i class="current">简单(4*3)</i>
+			<i>中等(8*6)</i>
+			<i>困难(10*10)</i>
+			<i>过不去(40*30)</i>
+		</div>
+		<ul>
+			<li>选择难度，点击开始，进行游戏</li>
+			<li>游戏开始后，点击鼠标，小鸟上移</li>
+			<li>当小鸟撞到管道时，游戏结束</li>
+			<li>当小鸟撞到地面时，游戏结束</li>
+			<li>当小鸟撞到超过顶部时，游戏结束</li>
+		</ul>
+	</div>
+	<div class="over">
+		<h2>恭喜您，拼图完成，点击进入下一关!!!</h2>
+		<button>下一关</button>
+	</div>
+	<canvas id="cvs" width="800" height="600"></canvas>
+	<script>
+		function loadImg(imgUrl,fn) {
+			//定义新对象存放已加载完成的图片
+			var imgObj={};
+
+			var loadImg1=0;
+			var totalImg=0;
+			for(var item in imgUrl){
+				//创建图片节点
+				var img=new Image();
+				totalImg++;
+				//图片加载完成之后执行回调函数
+				img.onload=function () {
+					 loadImg1++;
+					 if(loadImg1>=totalImg){
+					 	fn(imgObj);
+					 }
+				}
+				img.src=imgUrl[item];
+				imgObj[item]=img;
+			}
+		}
+	</script>
+	<script>
+		(function (w){
+			 //兼容性事件
+		    var EventUtil={
+				addHandler: function (ele,type,handler) {
+					if(ele.addEventListener){
+						ele.addEventListener(type,handler,false);
+					}else if(ele.attachEvent){
+						ele.attachEvent("on"+type,handler);
+					}else{
+						ele["on"+type]=handler;
+					}
+				},
+				preventDefault:function (event) {
+					if(event.preventDefault){
+						event.preventDefault();
+					}else{
+						event.returnValue=false;
+					}
+				},
+				removeHandler:function (ele,type,handler) {
+					if(ele.removeEventListener){
+						ele.removeEventListener(type,handler,false);
+					}else if(ele.detachEvent){
+						ele.detachEvent("on"+type,handler);
+					}
+					else{
+						ele["on"+type]=null;
+					}
+				},
+				//阻止冒泡
+				stopPropagation:function (event) {
+					if(event.stopPropagation){
+						event.stopPropagation();
+					}else{
+						event.cancelable=true;
+					}
+				}
+			}
+			function DrawBg(cvs,ctx,oCon,currentBox,willBox,img,x,y,aOver){
+				this.cvs=cvs;
+				this.ctx=ctx;
+				this.oCon=oCon;
+				this.currentBox=currentBox;
+				this.willBox=willBox;
+				this.img=img;
+				this.x=x;
+				this.y=y;
+				this.aOver=aOver;
+
+				this.width=this.img.width;
+				this.height=this.img.height;
+				this.cvsWidth=this.cvs.width;
+				this.cvsHeight=this.cvs.height;
+
+				//在原图片中每一张小图宽高
+				this.oWidth=this.width/this.x;
+				this.oHeight=this.height/this.y;
+				//在当前画布中中每一张小图宽高
+				this.cWidth=this.cvsWidth/this.x;
+				this.cHeight=this.cvsHeight/this.y;
+				//存放初始坐标
+				this.oArr=[];
+				this.randomArr=[];
+
+				this.over=false;
+
+				this._init();
+				this.draw();
+				this.bind();
+			}
+			DrawBg.prototype={
+				constructor: DrawBg,
+				//初始化大图片
+				_init: function (){
+					// this.ctx.drawImage(this.img,0,0,this.width,this.height,
+					// 	0,0,this.cvsWidth,this.cvsHeight);
+					//初始坐标
+					for (var i = 0; i < this.x; i++) {
+						for(var j = 0; j < this.y; j++){
+							this.oArr.push([i,j]);
+							this.randomArr.push([i,j]);
+						}
+					}
+
+					// console.log(this.randomArr)
+				},
+				//绘制背景小图片
+				draw: function (){
+					var self=this;
+					//打乱坐标
+					this.randomDraw();
+					
+					this.randomArr.forEach( function(v, i) {
+						self.ctx.drawImage(self.img,self.oWidth*v[0],self.oHeight*v[1],self.oWidth,self.oHeight,self.cWidth*self.oArr[i][0],self.cHeight*self.oArr[i][1],self.cWidth,self.cHeight);
+					});
+				},
+				randomDraw: function (){
+					//设置随机数组
+					this.randomArr.sort(function (a,b){
+						return Math.random()-0.5;
+					})
+				},
+				//显示需要交换的两个小盒子
+				showBox: function (x,y,ele){
+					var currentPosition=0;
+					var i1=Math.floor(x/this.cWidth);
+					var i2=Math.floor(y/this.cHeight);
+					for (var i = 0,len=this.oArr.length; i < len; i++) {
+						if(i1==this.oArr[i][0] && i2==this.oArr[i][1]){
+							currentPosition=i;
+						}
+					}
+					//找到图片所在位置
+					var currentPosiLeft=this.oArr[currentPosition][0]*this.cWidth;
+					var currentPosiTop=this.oArr[currentPosition][1]*this.cHeight;
+					// console.log(currentPosition+" "+currentImg)
+					
+					//修改盒子宽高
+					ele.style.width=this.cWidth+"px";
+					ele.style.height=this.cHeight+"px";
+					//显示盒子
+					ele.style.display="block";
+					//修改盒子出现位置
+					ele.style.left=currentPosiLeft+"px";
+					ele.style.top=currentPosiTop+"px";
+					// 找到图片位置
+					var currentImgLeft=this.randomArr[currentPosition][0]*this.cWidth;
+					var currentImgTop=this.randomArr[currentPosition][1]*this.cHeight;
+					ele.style.background="url("+this.img.src+") no-repeat top "+-1*currentImgTop+"px left "+-1*currentImgLeft+"px";
+					ele.style.backgroundSize=" 800px 600px";
+					//返回值便于后面使用
+					return currentPosition;
+				},
+				bind: function (){
+					var self=this;
+					var currentPosition,xx,yy;
+					//初始化鼠标最后停留的index
+					var lastIndex=0;
+					EventUtil.addHandler(this.oCon,"mousedown",function (e){
+						var e=event || window.event;
+						//鼠标在画布中的位置
+						var x=e.clientX-this.offsetLeft;
+						var y=e.clientY-this.offsetTop;
+						//显示当前盒子
+						currentPosition=self.showBox(x,y,self.currentBox);
+						// console.log(currentPosition)
+						//清除画布
+						self.ctx.clearRect(self.oArr[currentPosition][0]*self.cWidth,self.oArr[currentPosition][1]*self.cHeight,self.cWidth,self.cHeight);
+						
+						//鼠标在box中的位置
+						xx=x-self.currentBox.offsetLeft;
+						yy=y-self.currentBox.offsetTop;
+						EventUtil.addHandler(document,"mousemove",move);
+
+					
+					})
+					EventUtil.addHandler(self.oCon,"mouseup",function (){
+						//先画原处
+						self.ctx.drawImage(self.img,self.oWidth*self.randomArr[lastIndex][0],self.oHeight*self.randomArr[lastIndex][1],self.oWidth,self.oHeight,
+							self.cWidth*self.oArr[currentPosition][0],self.cHeight*self.oArr[currentPosition][1],self.cWidth,self.cHeight);
+
+						self.ctx.drawImage(self.img,self.oWidth*self.randomArr[currentPosition][0],self.oHeight*self.randomArr[currentPosition][1],self.oWidth,self.oHeight,
+							self.cWidth*self.oArr[lastIndex][0],self.cHeight*self.oArr[lastIndex][1],self.cWidth,self.cHeight);
+
+						//隐藏盒子
+						self.currentBox.style.display="none";
+						self.willBox.style.display="none";
+						//更新随机数组(交换顺序)
+						var temp=self.randomArr[currentPosition];
+						self.randomArr.splice(currentPosition,1,self.randomArr[lastIndex]);
+						self.randomArr.splice(lastIndex,1,temp);
+						// console.log(self.randomArr);
+
+						//两个数组完全相等则游戏结束
+						if(self.gameOver()){
+							self.aOver.style.display="block";
+						}
+
+						EventUtil.removeHandler(document,"mousemove",move);
+					})
+					//盒子移动来模拟画布的移动
+					function move(){
+						var e=event || window.event;
+						var xxx=e.clientX-self.oCon.offsetLeft-xx;
+						var yyy=e.clientY-self.oCon.offsetTop-yy;
+						//超界处理
+						xxx=xxx<0?0:xxx;
+						yyy=yyy<0?0:yyy;
+						xxx=xxx>self.cvsWidth-self.cWidth?self.cvsWidth-self.cWidth:xxx;
+						yyy=yyy>self.cvsHeight-self.cHeight?self.cvsHeight-self.cHeight:yyy;
+
+						self.currentBox.style.left=xxx+"px";
+						self.currentBox.style.top=yyy+"px";
+
+						//盒子中心点坐标
+						var cornerX=xxx+self.cWidth/2;
+						var cornerY=yyy+self.cHeight/2;
+						//显示需要交换的盒子
+						lastIndex=self.showBox(cornerX,cornerY,self.willBox);
+					}
+				},
+				//游戏结束
+				gameOver: function (){
+					//两个数组完全相等则游戏结束
+					var self=this;
+					this.over=self.randomArr.join("")==self.oArr.join("")
+					return this.over;
+				}
+			}
+			w.DrawBg=function (cvs,ctx,oCon,currentBox,willBox,img,x,y,aOver){
+				return new DrawBg(cvs,ctx,oCon,currentBox,willBox,img,x,y,aOver);
+			}
+			w.EventUtil=EventUtil;
+		})(window)
+	</script>
+	<script>
+		(function (w){
+			var cvs=document.querySelector("#cvs");
+			var ctx=cvs.getContext("2d");
+			var oCon=document.querySelector(".content")
+			var oCurPoint=oCon.querySelector(".currentCheckpoint")
+			var currentBox=document.querySelector(".currentBox")
+			var willBox=document.querySelector(".willBox")
+			var oBegin=document.querySelector(".begin")
+			var aOver=document.querySelector(".over")
+			//当前难度
+			var oCurrent=document.querySelector(".current")
+			var oH2=aOver.querySelector("h2")
+			var aBtn=document.querySelectorAll("button")
+			var aI=document.querySelectorAll("i")
+			var aSpan=oCurPoint.querySelectorAll("span")
+			//关卡
+			var checkPoint=1;
+			//便于计算背景图数量
+			var loadImgKey=[];
+			//关卡难度系数 ( difficultX * difficultY )
+			var difficultX=2;
+			var difficultY=3;
+			loadImg({
+				bg1: "images/timg.jpg",
+				bg2: "images/timg2.jpg",
+				bg3: "images/timg3.jpg",
+				bg4: "images/timg4.jpg",
+				bg5: "images/timg5.jpg",
+				bg6: "images/timg6.jpg",
+				bg7: "images/timg7.jpg"
+			},function (imgObj){
+				//存储背景图的key
+				for(var k in imgObj){
+					loadImgKey.push(k);
+				}
+				//选择难度
+				for (var i = 0,len=aI.length; i < len; i++) {
+					aI[i].index=i;
+					EventUtil.addHandler(aI[i],"click",function (){
+						for (var j = 0,len=aI.length; j < len; j++) {
+							aI[j].className="";
+						}
+						this.className="current";
+						if(this.index==1){
+							difficultX=8;
+							difficultY=6;
+						}else if(this.index==2){
+							difficultX=10;
+							difficultY=10;
+						}else if(this.index==3){
+							difficultX=40;
+							difficultY=30;
+						}
+					})
+				}
+				//开始游戏
+				EventUtil.addHandler(aBtn[0],"click",function (){
+					//重新获取当前难度节点
+					oCurrent=document.querySelector(".current")
+					oBegin.style.display="none";
+					oCurPoint.style.display="block";
+					aSpan[1].innerHTML=oCurrent.innerHTML;
+
+					//先设置第一关
+					DrawBg(cvs,ctx,oCon,currentBox,willBox,imgObj["bg"+checkPoint],difficultX,difficultY,aOver);
+				})
+					
+				EventUtil.addHandler(aBtn[1],"click",function (){
+					checkPoint++;
+					aSpan[0].innerHTML=checkPoint;
+					//判断是否完成所有关卡
+					if(checkPoint<=loadImgKey.length){
+						aOver.style.display="none";
+						DrawBg(cvs,ctx,oCon,currentBox,willBox,imgObj["bg"+checkPoint],difficultX,difficultY,aOver);
+						//如果当前关卡为最后一关，则修改显示内容
+						if(checkPoint==loadImgKey.length){
+							oH2.innerHTML="哇哦，好腻害，您竟然完成了所有关卡!!!";
+							this.innerHTML="返回";
+						}
+					}else{
+						//完成所有关卡后返回
+						history.go(0);
+					}	
+				})
+					
+			})
+			
+			
+		})(window)
+	</script>
+</body>
+</html>

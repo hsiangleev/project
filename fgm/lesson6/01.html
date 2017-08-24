@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>完美拖拽</title>
+	<style>
+		html{
+			height: 100%;
+		}
+		body{
+			background-color: #000;
+			height: 100%;
+		}
+		.box{
+			width: 300px;
+			height: 200px;
+			position: absolute;
+			top: 20%;
+			left: 30%;
+			border: 2px solid #ccc;
+		}
+		.top{
+			width: 100%;
+			height: 50px;
+			line-height: 50px;
+			border-bottom: 2px solid #ccc;
+			color: #ccc;
+			font-size: 14px;
+			box-sizing: border-box;
+			padding-right: 10px;
+			text-align: right;
+			cursor: move;
+			-webkit-user-select:none;
+			-moz-user-select:none;
+			-ms-user-select:none;
+			user-select:none;
+		}
+		p{
+			color: #ccc;
+			box-sizing: border-box;
+			padding-left: 10px;
+		}
+		span{
+			color: #cc6;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="top">
+			<b>点击回放拖拽轨迹</b>
+		</div>
+		<p>Drag: <span></span></p>
+		<p>offsetTop: <span></span></p>
+		<p>offsetLeft: <span></span></p>
+	</div>
+	<script>
+		var box=document.getElementsByClassName("box")[0];
+		var top=document.getElementsByClassName("top")[0];
+		var span=document.getElementsByTagName("span");
+		var b=document.getElementsByTagName("b")[0];
+		var oDrag=false;
+		status();
+		//数组arr存放移动时的数据
+		var arr=[];
+		var timer=null;
+		top.onmousedown=function (e) {
+			e=event || window.event;
+			//x,y为鼠标在top中的坐标
+			var x=e.clientX-box.offsetLeft;
+			var y=e.clientY-box.offsetTop;
+			//只有鼠标在top中才可以拖拽
+			if(x>0&&y>0&&x<300&&y<50){
+				oDrag=true;
+				top.onmousemove=function (e) {
+					e=event || window.event;
+					var xx=e.clientX-x;
+					var yy=e.clientY-y;
+					console.log(yy)
+					// xx,yy为移动的盒子距离左侧和上方的距离
+					if(xx>0&&yy>0&&xx<document.body.clientWidth-box.offsetWidth&&yy<document.body.clientHeight-box.offsetHeight){
+						box.style.top=yy+"px";
+						box.style.left=xx+"px";
+						arr.push({left:xx,top:yy});
+						status();
+					}
+				}
+			}
+		}
+		top.onmouseup=function (e) {
+			oDrag=false;
+			status();
+			//松开鼠标移除move事件
+			top.onmousemove=null;
+		}
+		//点击文字回放
+		b.onclick=function () {
+			var i=0;
+			timer=setInterval(function () {
+				i++;
+				if(i<arr.length){
+					box.style.top=arr[i].top+"px";
+					box.style.left=arr[i].left+"px";
+				}else{
+					clearInterval(timer);
+					arr=[];
+				}
+			}, 25)
+		}
+		// 添加信息
+		function status() {
+			var oLeft=box.offsetLeft;
+			var oTop=box.offsetTop;
+			span[0].innerHTML=oDrag;
+			span[1].innerHTML=oTop;
+			span[2].innerHTML=oLeft;
+		}
+	</script>
+</body>
+</html>

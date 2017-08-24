@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>函数传参，改变Div任意属性的值</title>
+	<style>
+		.box{
+			width: 240px;
+			margin: 50px auto;
+		}
+		span{
+			width: 200px;
+			height: 200px;
+			display: block;
+			margin-top: 50px;
+			color: #69f;
+			background-color: #ccc;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<label>属性名</label>
+		<input type="text">
+		<label>属性值</label>
+		<input type="text">
+		<button>确定</button>
+		<button>重置</button>
+		<span>在上方输入框输入"属性名"及"属性值"，点击确定按钮查看效果</span>
+	</div>
+	<script>
+		var inp=document.getElementsByTagName("input")
+		var btn=document.getElementsByTagName("button");
+		var span=document.getElementsByTagName("span")[0];
+		btn[0].onclick=function () {
+			var key=inp[0].value;
+			var val=inp[1].value;
+			span.style=key+":"+val;
+		}
+		btn[1].onclick=function () {
+			span.removeAttribute("style");
+		}
+	</script>
+</body>
+</html>

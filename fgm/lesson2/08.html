@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>简易JS年历</title>
+	<style>
+		.box{
+			width: 370px;
+			height: 420px;
+			position: relative;
+			overflow: hidden;
+			background-color: #ccc;
+			margin: 50px auto;
+		}
+		.month{
+			float: left;
+			width: 80px;
+			height: 80px;
+			background-color: #333;
+			color: #fff;
+			font-size: 18px;
+			margin: 10px 0 0 10px;
+			text-align: center;
+			cursor: pointer;
+		}
+		p{
+			line-height: 40px;
+			margin: 0;
+		}
+		span{
+			width: 350px;
+			height: 80px;
+			display: block;
+			position: absolute;
+			bottom: 20px;
+			left: 10px;
+			background-color: #ddd;
+		}
+		span h4,
+		span h6{
+			margin: 0;
+			line-height: 30px;
+		}
+		span h6{
+			font-weight: 400;
+			line-height: 20px;
+		}
+	</style>
+	<script src="../js/template-native.js"></script>
+	<script type="text/template" id="template">
+		<% for(var i=0;i<souse.length;i++){ %>
+			<div class="month">
+				<p><%=(i+1)%></p>
+				<p><%=souse[i]%></p>
+			</div>
+		<% } %>
+	</script>
+	<script>
+		window.onload=function () {
+			var oArray = [
+				"元旦：1月1日至3日放假三天。",
+				"春节：2月2日至8日放假7天。",
+				"妇女节：3月8日妇女节，与我无关。",
+				"清明节：4月3日至5日放假3天",
+				"劳动节：4月30日至5月2日放假3天。",
+				"端午节：6月4日至6日放假3天。",
+				"小暑：7月7日小暑。不放假。",
+				"七夕节：8月6日七夕节。不放假。",
+				"中秋节：9月10日至12日放假3天。",
+				"国庆节：10月1日至7日放假7天。",
+				"立冬：11月8日立冬。不放假。",
+				"艾滋病日:12月1日<br />废除奴隶制国际日:12月2日。"
+			];
+			var day={
+				souse:["JAN","FEB","MAR","APE","MAY","JUN","JUL","AUG","SEB","OCT","NOV","DET"]
+			};
+			var str=template("template",day);
+			var m=document.getElementsByClassName("m")[0];
+			m.innerHTML=str;
+
+			var strong=document.getElementsByTagName("strong")[0];
+			var h6=document.getElementsByTagName("h6")[0];
+			var mon=document.getElementsByClassName("month");
+			for (var i = 0; i < mon.length; i++) {
+				mon[i].index=i;
+				mon[i].onclick=function () {
+					strong.innerHTML=this.index+1;
+					h6.innerHTML=oArray[this.index];
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<div class="box">
+		<div class="m">
+			<!-- 模板生成 -->
+		</div>
+		<span>
+			<h4><strong>1</strong>月节日</h4>
+			<h6>元旦：1月1日至3日放假三天。</h6>
+		</span>
+	</div>
+
+	
+</body>
+</html>

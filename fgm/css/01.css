@@ -1,0 +1,44 @@
+/*
+Error: Invalid GBK character "\xE5"
+        on line 5 of E:\myBootstrap\fgm\lesson4\01.html
+
+1: <!DOCTYPE html>
+2: <html lang="en">
+3: <head>
+4: 	<meta charset="UTF-8">
+5: 	<title>setTimeout应用</title>
+6: 	<style>
+7: 		.box{
+8: 			width: 700px;
+9: 			height: 36px;
+10: 			margin: 50px auto;
+
+Backtrace:
+E:\myBootstrap\fgm\lesson4\01.html:5
+D:/ruby/ruby/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/util.rb:1325:in `rescue in block in find_encoding_error'
+D:/ruby/ruby/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/util.rb:1322:in `block in find_encoding_error'
+D:/ruby/ruby/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/util.rb:1321:in `each'
+D:/ruby/ruby/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/util.rb:1321:in `each_with_index'
+D:/ruby/ruby/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/util.rb:1321:in `find_encoding_error'
+D:/ruby/ruby/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/util.rb:930:in `check_sass_encoding'
+D:/ruby/ruby/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/engine.rb:436:in `check_encoding!'
+D:/ruby/ruby/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/engine.rb:392:in `_to_tree'
+D:/ruby/ruby/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/engine.rb:381:in `_render_with_sourcemap'
+D:/ruby/ruby/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/engine.rb:298:in `render_with_sourcemap'
+D:/ruby/ruby/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/plugin/compiler.rb:492:in `update_stylesheet'
+D:/ruby/ruby/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+D:/ruby/ruby/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/plugin/compiler.rb:209:in `each'
+D:/ruby/ruby/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+D:/ruby/ruby/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/plugin.rb:82:in `update_stylesheets'
+D:/ruby/ruby/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/exec/sass_scss.rb:340:in `watch_or_update'
+D:/ruby/ruby/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/exec/sass_scss.rb:51:in `process_result'
+D:/ruby/ruby/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/exec/base.rb:52:in `parse'
+D:/ruby/ruby/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/exec/base.rb:19:in `parse!'
+D:/ruby/ruby/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.4.24/bin/sass:13:in `<top (required)>'
+D:/ruby/ruby/Ruby24-x64/bin/sass:22:in `load'
+D:/ruby/ruby/Ruby24-x64/bin/sass:22:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Invalid GBK character \"\xE5\"\A         on line 5 of E:\myBootstrap\fgm\lesson4\01.html\A \A 1: <!DOCTYPE html>\A 2: <html lang=\"en\">\A 3: <head>\A 4: 	<meta charset=\"UTF-8\">\A 5: 	<title>setTimeout应用</title>\A 6: 	<style>\A 7: 		.box{\A 8: 			width: 700px;\A 9: 			height: 36px;\A 10: 			margin: 50px auto;"; }

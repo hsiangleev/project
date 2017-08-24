@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="icon" href="../lee.ico" >
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <title>凉宫</title>
+	<style>
+		html,
+		body{
+			margin: 0;
+			padding: 0;
+			width: 100%;
+			height: 100%;
+		}
+		#box{
+			width: 800px;
+			height: 600px;
+			position: absolute;
+			top: 0;
+			left: 50%;
+			margin-left: -400px;
+			background: linear-gradient(-45deg, #69f, #f69);
+			overflow: hidden;
+		}
+		.oHead{
+			width: 20px;
+			height: 20px;
+			position: absolute;
+			z-index: 10;
+			border-radius: 50%;
+			background: radial-gradient(#ccc 20%,#333 99%);
+			top: 100px;
+			left: 100px;
+		}
+		.oBody{
+			width: 20px;
+			height: 20px;
+			position: absolute;
+			top: 100px;
+			left: 80px;
+			border-radius: 50%;
+			background-color: #aaa;
+		}
+		.random{
+			width: 20px;
+			height: 20px;
+			position: absolute;
+			top: 200px;
+			left: 200px;
+			border: 1px solid #fff;
+			background: url('images/body.gif') no-repeat;
+		}
+		#over{
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			display: none;
+			background-color: rgba(160, 160, 160, 0.6);
+		}
+		#over h3,
+		#over h4{
+			width: 200px;
+			height: 50px;
+			margin: 0;
+			text-align: center;
+			position: absolute;
+			top: 30%;
+			left: 50%;
+			color: #fff;
+			margin-left: -100px;
+		}
+		#over h4{
+			top: 35%;
+		}
+		#begin button,
+		#over button{
+			width: 80px;
+			height: 30px;
+			position: absolute;
+			top: 40%;
+			left: 50%;
+			margin-left: -40px;
+			background-color: #69f;
+			cursor: pointer;
+			color: #fff;
+		}
+		#begin{
+			width: 800px;
+			height: 600px;
+			background-color: rgba(120, 240, 180, 1);
+			position: absolute;
+			top: 0;
+			left: 50%;
+			z-index: 20;
+			margin-left: -400px;
+		}
+		#begin ul{
+			margin: 0;
+			padding: 0;
+			position: absolute;
+			top: 48%;
+			left: 50%;
+			margin-left: -40px;
+			font-size: 12px;
+			color: #666;
+		}
+		#simple{
+			width: 100px;
+			height: 120px;
+			position: absolute;
+			top: 50%;
+			left: 0;
+			margin-top: -60px;
+		}
+		#simple i{
+			width: 80px;
+			height: 30px;
+			background-color: #69f;
+			display: block;
+			margin: 5px 0;
+			text-align: center;
+			line-height: 30px;
+			font-size: 12px;
+			font-style: normal;
+			color: #fff;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+		#simple i.current{
+			background-color: #f69;
+		}
+		.btn{
+			width: 100px;
+			height: 100px;
+			position: fixed;
+			right: 0;
+			bottom: 10%;
+			transform: rotate(-45deg);
+			display: none;
+		}
+		.btn button{
+			width: 40px;
+			height: 40px;
+			border-radius: 40%;
+			outline: none;
+			border: 0;
+			margin: 5px 0 0 0;
+			color: #fff;
+			background-color: rgba(239,155,160,0.8);
+			transform: rotate(45deg);
+		}
+		.btn button:hover{
+			background-color: rgba(0,124,195,0.4);
+		}
+		@media screen and (max-width: 778px){
+			#simple{
+				left: 50%;
+				margin-left: -40px;
+				top: 27%;
+			}
+			#box,
+			#begin{
+				width: 100%;
+				height: 100%;
+				margin: 0;
+				left: 0;
+			}
+			#begin button{
+				outline: none;
+				border: none;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<!-- 蛇头 -->
+		<div class="oHead"></div>
+		<!-- 蛇身 -->
+		<div class="oBody"></div>
+		<div class="oBody"></div>
+		<div class="oBody"></div>
+		<div class="oBody"></div>
+		<!-- 食物 -->
+		<div class="random"></div>
+	</div>
+	<div id="over">
+		<h3>很遗憾，游戏结束</h3>
+		<h4>得分：<span>100</span>分</h4>
+		<button>返回</button>
+	</div>
+	<div id="begin">
+		<button>开始游戏</button>
+		<ul>
+			<li>选择难度点击开始游戏</li>
+			<li>按上下左右键控制移动</li>
+			<li>不能往相反的方向移动</li>
+			<li>不能撞墙或撞到自身</li>
+		</ul>
+		<div id="simple">
+			<i class="current">简单</i>
+			<i>中等</i>
+			<i>困难</i>
+		</div>
+	</div>
+	<!-- 手机控制键 -->
+	<div class="btn">
+		<button data-num="37">左</button>
+		<button data-num="38">上</button>
+		<button data-num="40">下</button>
+		<button data-num="39">右</button>
+	</div>
+
+	<script src="js/loadImg.js"></script>
+	<script src="js/entrance.js"></script>
+	<script>
+		(function (w){
+			var oBox=document.querySelector("#box");
+			var oBegin=document.querySelector("#begin");
+			var oOver=document.querySelector("#over");
+			var aBody=document.querySelectorAll(".oBody");
+			var aBtn=document.querySelectorAll("button");
+			var aSpan=document.querySelectorAll("span");
+			var aI=document.querySelectorAll("i");
+			var oRandom=document.querySelector(".random");
+			var oHead=document.querySelector(".oHead");
+			var oBtn=document.querySelector(".btn");
+			//整个盒子宽高
+			var oWidth=oBox.offsetWidth;
+			var oHeight=oBox.offsetHeight;
+			var timer=null;
+			//游戏是否结束
+			var over=false;
+			//游戏难度
+			var sim=200;
+			loadImg({
+				food: "images/body.gif"
+			},function (imgObj){
+				//实例化
+				var DrawSnake=window.DrawSnake(oWidth,oHeight,oHead,aBody,oRandom,aBtn,over,oBtn);
+				//点击开始游戏
+				aBtn[1].onclick=function (){
+					//创建随机食物
+					DrawSnake.food();
+					timer=setInterval(function (){
+						DrawSnake.headMove();
+						if(DrawSnake.over){
+							clearInterval(timer);
+							oOver.style.display="block";
+							//得分
+							aSpan[0].innerHTML=20*DrawSnake.arr.length;
+							return;
+						}
+						DrawSnake.eatFood();
+					}, sim);
+					oBegin.style.display="none";
+				}
+				//设置游戏难度
+				for (var i = 0,len=aI.length; i < len; i++) {
+					aI[i].index=i;
+					aI[i].onclick=function () {
+						for (var i = 0,len=aI.length; i < len; i++) {
+							aI[i].classList.remove("current");
+						}
+						this.classList.add("current");
+						if(this.index==0){
+							sim=200;
+						}else if(this.index==1){
+							sim=150;
+						}else{
+							sim=100;
+						}
+					}
+				}
+						
+			})
+
+		})(window)
+	</script>
+</body>
+</html>

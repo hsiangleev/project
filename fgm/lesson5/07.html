@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>用键盘控制Div</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		html,
+		body{
+			width: 100%;
+			height: 100%;
+		}
+		span{
+			width: 100px;
+			height: 100px;
+			background-color: #c69;
+			display: block;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+	<span></span>
+	<script>
+		var span=document.getElementsByTagName("span")[0];
+		document.onkeydown=function (e) {
+			var oLeft=span.offsetLeft;
+			var oWidth=span.offsetWidth;
+			var oMaxWidth=document.body.clientWidth-oWidth-12;
+
+			var oTop=span.offsetTop;
+			var oHeight=span.offsetHeight;
+			var oMaxHeight=document.body.clientHeight-oHeight-12;
+			if(e.keyCode==39 && oLeft<oMaxWidth){
+				span.style.left=oLeft+10+"px";
+			}else if(e.keyCode==37 && oLeft>0){
+				span.style.left=oLeft-10+"px";
+			}else if(e.keyCode==40 && oTop<oMaxHeight){
+				span.style.top=oTop+10+"px";
+			}else if(e.keyCode==38 && oTop>0){
+				span.style.top=oTop-10+"px";
+			}
+			// console.log(oMaxHeight)
+			// console.log(e.keyCode)
+		}
+	</script>
+</body>
+</html>

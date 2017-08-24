@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>用户按下键盘，显示keyCode</title>
+	<style>
+		#box{
+			width: 400px;
+			height: 200px;
+			margin: 50px auto;
+			font-size: 60px;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		按任意键
+	</div>
+	<script>
+		document.onkeydown=function (e) {
+			e=event || window.event;
+			var val=e.keyCode;
+			document.getElementById("box").innerHTML=val;
+		}
+	</script>
+</body>
+</html>

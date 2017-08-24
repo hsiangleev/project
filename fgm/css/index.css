@@ -1,0 +1,40 @@
+section {
+  width: 28rem;
+  margin: 20px auto;
+  padding: 3px;
+  border-radius: 0.8rem;
+  box-sizing: border-box;
+  border: 10px solid #ddd;
+}
+section ul {
+  overflow: hidden;
+  height: 27.59px;
+}
+section ul li {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 1px 0;
+  padding: 0.3rem 1rem;
+  background-color: #7CF;
+}
+section ul li.oLi {
+  background-color: #9C0;
+}
+section ul li a {
+  color: #fff;
+}
+section ul li a:hover {
+  color: #ddd;
+  text-decoration: underline;
+}
+section ul li p {
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.1rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/*# sourceMappingURL=index.css.map */

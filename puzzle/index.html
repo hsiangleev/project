@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="icon" href="../lee.ico" >
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <title>凉宫</title>
+	<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+	<!-- z-index: bg:-1; content: 1; canvas: 0 ; over: 10; begin: 9; -->
+	<!-- 背景提示图 -->
+	<div class="bg"></div>
+	<!-- 当前模拟画布拖拽的盒子节点 -->
+	<canvas id="cvs" width="800" height="600"></canvas>
+	<div class="content">
+		<!-- 显示当前关卡 -->
+		<div class="currentCheckpoint">
+			当前关卡: <span>1</span><br>
+			难度系数: <span>简单(4*3)</span>
+		</div>
+		<!-- 当前移动的盒子 -->
+		<div class="currentBox"></div>
+		<!-- 需要替换的盒子 -->
+		<div class="willBox"></div>
+	</div>
+	<div class="begin">
+		<input type="button" value="开始" class="button">
+		<div class="simple">
+			<i class="current">简单(2*3)</i>
+			<i>中等(4*3)</i>
+			<i>困难(8*6)</i>
+			<i>过不去(10*10)</i>
+			<i>试试看(40*30)</i>
+		</div>
+		<ul>
+			<li>选择难度，点击开始，进行游戏</li>
+			<li>按下鼠标，拖动到需要交换的地方松开</li>
+			<li>若点击图片则只与上次移动的那张交换(默认第一张)</li>
+			<li>注意: 鼠标拖动后不要在界面外松开</li>
+		</ul>
+	</div>
+	<div class="over">
+		<h2>恭喜您，拼图完成，点击进入下一关!!!</h2>
+		<input type="button" value="下一关" class="button">
+	</div>
+	<script src="js/loadImg.js"></script>
+	<script src="js/addEvent.js"></script>
+	<script src="js/drawBg.js"></script>
+	<script src="js/index.js"></script>
+</body>
+</html>

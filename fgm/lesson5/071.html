@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>用键盘控制Div</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		html,
+		body{
+			width: 100%;
+			height: 100%;
+		}
+		.box{
+			font-size: 14px;
+			color: #666;
+			width: 300px;
+			margin: 0 auto;
+		}
+		span{
+			width: 100px;
+			height: 100px;
+			background-color: #c69;
+			display: block;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			z-index: -2;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		上下左右控制移动，ctrl+↑减小，ctrl+↓变大
+	</div>
+	<span></span>
+	<script>
+		var span=document.getElementsByTagName("span")[0];
+		var l=r=u=d=big=small=false;
+		var timer=null;
+
+		timer=setInterval(function () {
+			if(l&& span.offsetLeft>0){
+				span.style.left=span.offsetLeft-10+"px";
+			}
+			else if(r && span.offsetLeft<document.body.clientWidth-span.offsetWidth-10){
+				span.style.left=span.offsetLeft+10+"px";
+			}
+			if(u &&span.offsetTop>0){
+				var oldWidth=span.offsetWidth;
+				var oldHeight=span.offsetHeight;
+				if(small){
+					span.style.width=span.offsetWidth*0.95+"px";
+					span.style.height=span.offsetHeight*0.95+"px";
+					span.style.top=span.offsetTop+(oldWidth-span.offsetWidth)/2+"px";
+					span.style.left=span.offsetLeft+(oldHeight-span.offsetHeight)/2+"px";
+				}else{
+					span.style.top=span.offsetTop-10+"px";
+				}
+			}
+			else if(d && span.offsetTop<document.body.clientHeight-span.offsetHeight-10){
+				var oldWidth=span.offsetWidth;
+				var oldHeight=span.offsetHeight;
+				if(big){
+					span.style.width=span.offsetWidth*1.1+"px";
+					span.style.height=span.offsetHeight*1.1+"px";
+					span.style.top=span.offsetTop+(oldWidth-span.offsetWidth)/2+"px";
+					span.style.left=span.offsetLeft+(oldHeight-span.offsetHeight)/2+"px";
+				}else{
+					span.style.top=span.offsetTop+10+"px";
+				}
+			}
+		}, 50)
+		
+		document.onkeydown=function (e) {
+			e=event || window.event;
+			//对应键按下时状态为真
+			switch (e.keyCode) {
+				case 37:
+					l=true;
+					break;
+				case 39:
+					r=true;
+					break;
+				case 38:
+					if(e.ctrlKey){
+						small=true;
+					}
+					u=true;
+					break;
+				case 40:
+					if(e.ctrlKey){
+						big=true
+					}
+					d=true;
+					break;
+				default:
+					// statements_def
+					break;
+			}
+			return false;
+		}
+		document.onkeyup=function (e) {
+			e=event || window.event;
+			//对应键松开时状态为假
+			switch (e.keyCode) {
+				case 37:
+					l=false;
+					break;
+				case 39:
+					r=false;
+					break;
+				case 38:
+					if(e.ctrlKey){
+						small=false;
+					}
+					u=false;
+					break;
+				case 40:
+					if(e.ctrlKey){
+						big=false;
+					}
+					d=false;
+					break;
+			}
+			
+		}
+	</script>
+</body>
+</html>

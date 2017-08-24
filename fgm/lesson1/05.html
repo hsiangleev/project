@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>鼠标移入/移出改变样式</title>
+	<style>
+		.box{
+			width: 200px;
+			height: 200px;
+			margin: 50px auto;
+			padding: 5px;
+			background: #000;
+			color: #fff;
+			border: 10px solid #000;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		鼠标移入改变样式，鼠标移出恢复。
+	</div>
+
+	<script>
+		var box=document.getElementsByClassName("box")[0];
+		box.onmouseenter=function () {
+			box.style=`cursor: crosshair;
+						color: #f00;
+						border: 10px solid #f00;
+						background: #fff;
+			`;
+		}
+		box.onmouseleave=function () {
+			box.style=`cursor: default;
+						color: #fff;
+						border: 10px solid #000;
+						background: #000;
+			`;
+		}
+	</script>
+</body>
+</html>

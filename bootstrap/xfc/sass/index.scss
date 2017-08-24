@@ -1,0 +1,333 @@
+
+	body{
+		font-size: 12px;
+	}
+	// header开始
+	header{
+		position: fixed;
+		z-index: 3000;
+		top: 0;
+		width: 100%;
+		background-color: #fff;
+		.navbar-default{
+			background-color: #fff;
+			margin-bottom: 0;
+			border: 0;
+			.header-icon{
+				width: 300px;
+				height: 60px;
+				background: url("../images/logo.png") no-repeat;
+			}
+			.header-nav{
+				float: right;
+				ul{
+
+					a{
+						margin: 0 1px;
+						height: 60px;
+						font-size: 16px;
+						&:hover{
+							background-color: #e6e6e6 !important;
+						}
+						img{
+							margin-top: -8px;
+						}
+					}
+				}
+			}
+		}
+			
+	}
+	@media screen and (max-width: 992px) {
+		header{
+			.navbar-default{
+				.header-icon{
+					width: 121px;
+					background: url("../images/logo_min.png") no-repeat;
+				}
+			}
+		}
+	}
+	@media screen and (max-width: 768px) {
+		header{
+			position: fixed;
+			.navbar-default{
+				.header-icon{
+					width: 100%;
+				}
+				.header-nav{
+					width: 100%;
+				}
+			}
+		}
+	}
+	// header结束
+
+	// slide开始
+	#slide{
+		margin-top: 60px;
+		height: 767px;
+		background: url("../images/ppt_bg.jpg") no-repeat;
+		background-size: 100% 100%;
+		.carousel-inner{
+			.item{
+				height: 767px;
+				text-align: center;
+				h1{
+					height: 257px;
+					line-height: 257px;
+					color: #fff;
+					margin: 0;
+				}
+				img{
+					display: inline;
+					width: 51%;
+					height: 480px;
+				}
+			}
+		}
+		
+	}
+	@media screen and (max-width: 768px) {
+		#slide{
+			height: auto;
+			background: url("../images/ppt_bg2.jpg") no-repeat;
+			background-size: 100% 100%;
+			.carousel-inner{
+				height: auto;
+				.item{
+					height: auto;
+					h1{
+						height: 140px;
+						line-height: 70px;
+						font-size: 24px;
+					}
+					img{
+						display: none;
+					}
+				}
+			}
+			.carousel-control{
+				display: none;
+			}
+		}
+	}
+
+
+	// slide结束
+
+	// serve开始
+	@mixin serve-top{
+		.serve-top{
+			text-align: center;
+			height: 100px;
+			position: relative;
+			h2{
+				color: #00b3fd;
+			}
+			span{
+				display: block;
+				width: 90px;
+				height: 2px;
+				position: absolute;
+				left: 50%;
+				margin-left: -45px;
+				margin-top: 10px;
+				background-color: #00b3fd;
+			}
+		}
+	}
+	#serve{
+		margin-bottom: 100px;
+		margin-top: 100px;
+		@include serve-top;
+		.serve-content{
+			display: flex;
+			justify-content:center;
+			flex-wrap: wrap;
+			.serve-content-box{
+				text-align: center;
+				width: 20%;
+				margin-top: 50px;
+				.serve-content-box-img{
+					display: flex;
+					justify-content:center;
+					i{
+						width: 140px;
+						height: 140px;
+						display: block;
+						background: url("../images/serve1.png") no-repeat;
+						&.i2{
+							background: url("../images/serve2.png") no-repeat;
+						}
+						&.i3{
+							background: url("../images/serve3.png") no-repeat;
+						}
+						&.i4{
+							background: url("../images/serve4.png") no-repeat;
+						}
+						&.i5{
+							background: url("../images/serve5.png") no-repeat;
+						}
+					}
+				}
+				p{
+					margin: 0;
+				}
+			}
+		}
+	}
+	@media screen and (max-width: 992px) {
+		#serve{
+			.serve-content{
+				.serve-content-box{
+					width: 50%;
+				}
+			}
+		}
+	}
+	@media screen and (max-width: 768px) {
+		#serve{
+			.serve-content{
+				.serve-content-box{
+					width: 100%;
+				}
+			}
+		}
+	}
+
+	// serve结束
+
+	// product开始
+	#product{
+		background: #f1f5f8;
+		margin-bottom: 50px;
+		padding-bottom: 30px;
+		@include serve-top;
+		.product-content{
+			display: flex;
+			justify-content: space-around;
+			flex-wrap: wrap;
+			.product-content-box{
+				background-color: #fff;
+				width: 28%;
+				margin-top: 20px;
+				.serve-content-box-img{
+					padding-top: 10px;
+					display: flex;
+					justify-content: center;
+				}
+				p{
+					font-size: 16px;
+					padding-left: 10px;
+				}
+				i{
+					font-size: 14px;
+					padding-left: 10px;
+					color: #aaa;
+				}
+			}
+		}
+	}
+	@media screen and (max-width: 992px) {
+		#product{
+			.product-content{
+				.product-content-box{
+					width: 45%;
+				}
+			}
+		}
+	}
+	@media screen and (max-width: 768px) {
+		#product{
+			.product-content{
+				.product-content-box{
+					width: 52%;
+					p{
+						padding-left: 25px;
+					}
+					i{
+						padding-left: 25px;
+					}
+				}
+			}
+		}
+	}
+	//product结束
+
+	// client开始
+	#client{
+		margin-bottom: 50px;
+		padding-bottom: 30px;
+		@include serve-top;
+		.product-content{
+			.product-content-box{
+				display: flex;
+				justify-content: space-around;
+				flex-wrap: wrap;
+				a{
+					margin-top: 20px;
+					width: 24%;
+					height: 88px;
+					background-color: #f1f5f8;
+					display: flex;
+					justify-content: space-around;
+					img{
+						margin-top: 3%;
+						margin-left: 5%;
+					}
+				}
+			}
+		}
+	}
+	@media screen and (max-width: 992px) {
+		#client{
+			.product-content{
+				.product-content-box{
+					a{
+						width: 36%;
+					}
+				}
+			}
+		}
+	}
+	@media screen and (max-width: 768px) {
+		#client{
+			.product-content{
+				.product-content-box{
+					a{
+						width: 55%;
+					}
+				}
+			}
+		}
+	}
+	//client结束
+
+	//about开始
+	#about{
+		height: 500px;
+		background: url("../images/about_bg.jpg") no-repeat;
+		background-size: 100% 100%;
+		@include serve-top;
+		.serve-top{
+			padding-top: 30px;
+			margin-bottom: 50px;
+			h2{
+				color: #fff;
+			}
+			span{
+				background-color: #fff;
+				margin-bottom: 50px;
+			}
+		}
+		p{
+			color: #fff;
+			margin: 0;
+			text-align: center;
+			font-size: 16px;
+			line-height: 30px;
+		}
+	}
+
+	// about结束

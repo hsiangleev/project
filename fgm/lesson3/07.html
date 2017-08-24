@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>网页计算器</title>
+	<style>
+		.box{
+			width: 300px;
+			height: 430px;
+			background-color: #242424;
+			margin: 50px auto;
+			border-radius: 10px;
+			padding: 20px 0 10px;
+			box-sizing: border-box;
+		}
+		.top{
+			height: 80px;
+			background: url("images/inputBg.jpg") repeat-x;
+			background-color: #fff;
+			position: relative;
+
+		}
+		h2{
+			margin: 0;
+			position: absolute;
+			top: 5px;
+			right: 10px;
+			line-height: 50px;
+			top: 15px;
+			font-size: 36px;
+		}
+		ul{
+			margin: 0 0 0 15px;
+			padding: 0;
+			overflow: hidden;
+			height: 320px;
+			box-sizing: border-box;
+			list-style: none;
+			position: relative;
+		}
+		ul li{
+			width: 60px;
+			height: 40px;
+			line-height: 40px;
+			float: left;
+			margin: 20px 8px 0 0;
+			border-radius: 5px;
+			background: url("images/btn.png") top 0px left 0px;
+			color: #fff;
+			text-align: center;
+			font-size: 20px;
+			cursor: pointer;
+			font-weight: 600;
+		}
+		ul li:hover{
+			background: url("images/btn.png") top 0px left -66px;
+		}
+		ul li.white{
+			background: url("images/btn.png") top -40px left 0px;
+		}
+		ul li.white:hover{
+			background: url("images/btn.png") top -40px left -66px;
+		}
+		ul li.yellow{
+			height: 95px;
+			position: absolute;
+			right: 13px;
+			bottom: 24px;
+			line-height: 95px;
+			background: url("images/btn.png") top -165px left 0px;
+		}
+		ul li.yellow:hover{
+			background: url("images/btn.png") top -165px left -66px;
+		}
+		ul li:last-child{
+			position: absolute;
+			bottom: 24px;
+			left: 136px;
+		}
+		ul li:nth-last-child(2){
+			position: absolute;
+			bottom: 24px;
+			width: 128px;
+			left: 0px;
+			background: url("images/btn.png") top -82px left 0px;
+		}
+		ul li:nth-last-child(2):hover{
+			background: url("images/btn.png") top -122px left 0px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="top">
+			<h2>0</h2>
+		</div>
+		<ul>
+			<li class="white">c</li>
+			<li class="white">%</li>
+			<li class="white">/</li>
+			<li class="white">*</li>
+			<li>7</li>
+			<li>8</li>
+			<li>9</li>
+			<li class="white">-</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+			<li class="white">+</li>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li class="yellow">=</li>
+			<li>0</li>
+			<li>.</li>
+		</ul>
+	</div>
+
+	<script>
+		var h2=document.getElementsByTagName("h2")[0];
+		var ali=document.getElementsByTagName("li");
+		for (var i = 0; i < ali.length; i++) {
+			ali[i].index=i;
+			var lastkey="";
+			ali[i].onclick=function () {
+				var val=this.innerHTML;
+				h2.innerHTML+=val;
+				//删除开头为0的
+				var arr=h2.innerHTML.split("");
+				if(arr[0]=="0"){
+					arr.shift();
+				}
+				var str2=arr.join("");
+				var re1=/^[\*\/.%].+/;	//以*/.%开头
+				var re2=/.+[\*\/+-.%]=$/		//以+-*/.%结尾
+				if(str2.match(re1) || str2.match(re2)){
+					h2.innerHTML="输入错误";	
+					//输入错误，一秒后归0
+					setTimeout(function () {
+						h2.innerHTML=0;
+					},1000);
+					return ;
+				}
+				//连续两次单击运算符
+				var re3=/[\*\/+-.%]/;
+				if(lastkey.match(re3)&&val.match(re3)){
+					h2.innerHTML="输入错误";	
+					//输入错误，一秒后归0
+					setTimeout(function () {
+						h2.innerHTML=0;
+					},1000);
+					return ;
+				}
+				h2.innerHTML=str2;
+				if(val=="c"){
+					h2.innerHTML=0;
+				}else if(val=="="){
+					var str=h2.innerHTML;
+					var str1=str.split("=").join("");
+					var result=eval(str1);
+					console.log()
+					if(String(result).length>10){
+						result=result.toFixed(10);
+					}
+					h2.innerHTML=result;
+				}
+				lastkey=val;	//上次点击的
+			}
+		}
+
+	</script>
+</body>
+</html>

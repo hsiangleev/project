@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		html,
+		body{
+			margin: 0;
+			padding: 0;
+		}
+		#cvs{
+			margin: 0 auto; 
+			display: block;
+			border: 1px solid #ccc;
+		}
+		.content{
+			width: 800px;
+			height: 600px;
+			position: absolute;
+			top: 0;
+			left: 50%;
+			margin-left: -400px;
+			border: 1px solid #ccc;
+		}
+		img{
+			width: 800px;
+			height: 600px;
+			position: absolute;
+			top: -9999px;
+			left: -9999px;
+		}
+		.currentBox,
+		.willBox{
+			width: 200px;
+			height: 200px;
+			position: absolute;
+			top: 0;
+			z-index: 1;
+			left: 200px;
+			outline: 2px solid #69f;
+			display: none;
+			background: url("images/timg.jpg") no-repeat;
+			background-size: 800px 600px;
+			/* background-position: top 0px left -200px; */
+		}
+		.willBox{
+			z-index: 0;
+			outline: 2px solid #f69;
+		}
+	</style>
+</head>
+<body>
+	<div class="content">
+		<!-- 当前移动的盒子 -->
+		<div class="currentBox"></div>
+		<!-- 需要替换的盒子 -->
+		<div class="willBox"></div>
+	</div>
+	<canvas id="cvs" width="800" height="600"></canvas>
+	<script>
+		function loadImg(imgUrl,fn) {
+			//定义新对象存放已加载完成的图片
+			var imgObj={};
+
+			var loadImg1=0;
+			var totalImg=0;
+			for(var item in imgUrl){
+				//创建图片节点
+				var img=new Image();
+				totalImg++;
+				//图片加载完成之后执行回调函数
+				img.onload=function () {
+					 loadImg1++;
+					 if(loadImg1>=totalImg){
+					 	fn(imgObj);
+					 }
+				}
+				img.src=imgUrl[item];
+				imgObj[item]=img;
+			}
+		}
+	</script>
+	<script>
+		(function (w){
+			function DrawBg(cvs,ctx,oCon,currentBox,willBox,img,x,y){
+				this.cvs=cvs;
+				this.ctx=ctx;
+				this.oCon=oCon;
+				this.currentBox=currentBox;
+				this.willBox=willBox;
+				this.img=img;
+				this.x=x;
+				this.y=y;
+
+				this.width=this.img.width;
+				this.height=this.img.height;
+				this.cvsWidth=this.cvs.width;
+				this.cvsHeight=this.cvs.height;
+
+				//在原图片中每一张小图宽高
+				this.oWidth=this.width/this.x;
+				this.oHeight=this.height/this.y;
+				//在当前画布中中每一张小图宽高
+				this.cWidth=this.cvsWidth/this.x;
+				this.cHeight=this.cvsHeight/this.y;
+				//存放初始坐标
+				this.oArr=[];
+				this.randomArr=[];
+
+				this.over=false;
+
+				this._init();
+				this.draw();
+				this.bind();
+				
+			}
+			DrawBg.prototype={
+				constructor: DrawBg,
+				//初始化大图片
+				_init: function (){
+					// this.ctx.drawImage(this.img,0,0,this.width,this.height,
+					// 	0,0,this.cvsWidth,this.cvsHeight);
+					//初始坐标
+					for (var i = 0; i < this.x; i++) {
+						for(var j = 0; j < this.y; j++){
+							this.oArr.push([i,j]);
+							this.randomArr.push([i,j]);
+						}
+					}
+					// console.log(this.randomArr)
+				},
+				//绘制背景小图片
+				draw: function (){
+					var self=this;
+					//打乱坐标
+					this.randomDraw();
+					
+					this.randomArr.forEach( function(v, i) {
+						self.ctx.drawImage(self.img,self.oWidth*v[0],self.oHeight*v[1],self.oWidth,self.oHeight,self.cWidth*self.oArr[i][0],self.cHeight*self.oArr[i][1],self.cWidth,self.cHeight);
+					});
+				},
+				randomDraw: function (){
+					//0-11随机数
+					this.randomArr.sort(function (a,b){
+						return Math.random()-0.5;
+					})
+				},
+				showBox: function (x,y,ele){
+					var currentPosition=0;
+					var i1=Math.floor(x/this.cWidth);
+					var i2=Math.floor(y/this.cHeight);
+					for (var i = 0,len=this.oArr.length; i < len; i++) {
+						if(i1==this.oArr[i][0] && i2==this.oArr[i][1]){
+							currentPosition=i;
+						}
+					}
+					//找到图片所在位置
+					var currentPosiLeft=this.oArr[currentPosition][0]*this.cWidth;
+					var currentPosiTop=this.oArr[currentPosition][1]*this.cHeight;
+					// console.log(currentPosition+" "+currentImg)
+					//显示盒子
+					ele.style.display="block";
+					ele.style.left=currentPosiLeft+"px";
+					ele.style.top=currentPosiTop+"px";
+					// 找到图片位置
+					var currentImgLeft=this.randomArr[currentPosition][0]*this.cWidth;
+					var currentImgTop=this.randomArr[currentPosition][1]*this.cHeight;
+					ele.style.backgroundPosition="top "+-1*currentImgTop+"px left "+-1*currentImgLeft+"px";
+
+					return currentPosition;
+				},
+				bind: function (){
+					var self=this;
+					this.oCon.onmousedown=function (e){
+						var e=event || window.event;
+						//鼠标在画布中的位置
+						var x=e.clientX-this.offsetLeft;
+						var y=e.clientY-this.offsetTop;
+						//显示当前盒子
+						var currentPosition=self.showBox(x,y,self.currentBox);
+						// console.log(currentPosition)
+						//清除画布
+						self.ctx.clearRect(self.oArr[currentPosition][0]*self.cWidth,self.oArr[currentPosition][1]*self.cHeight,self.cWidth,self.cHeight);
+						
+						//鼠标在box中的位置
+						var xx=x-self.currentBox.offsetLeft;
+						var yy=y-self.currentBox.offsetTop;
+						//鼠标最后停留的index
+						var lastIndex=0;
+						document.onmousemove=function (e){
+							var e=event || window.event;
+							var xxx=e.clientX-self.oCon.offsetLeft-xx;
+							var yyy=e.clientY-self.oCon.offsetTop-yy;
+							//超界处理
+							xxx=xxx<0?0:xxx;
+							yyy=yyy<0?0:yyy;
+							xxx=xxx>self.cvsWidth-self.cWidth?self.cvsWidth-self.cWidth:xxx;
+							yyy=yyy>self.cvsHeight-self.cHeight?self.cvsHeight-self.cHeight:yyy;
+							self.currentBox.style.left=xxx+"px";
+							self.currentBox.style.top=yyy+"px";
+
+							//盒子中心点坐标
+							var cornerX=xxx+100;
+							var cornerY=yyy+100;
+							//显示需要交换的盒子
+							lastIndex=self.showBox(cornerX,cornerY,self.willBox);
+						}
+						document.onmouseup=function (){
+							document.onmousemove=null;
+							// console.log(self.randomArr[lastIndex])
+							//先画原处
+							self.ctx.drawImage(self.img,self.oWidth*self.randomArr[lastIndex][0],self.oHeight*self.randomArr[lastIndex][1],self.oWidth,self.oHeight,
+								self.cWidth*self.oArr[currentPosition][0],self.cHeight*self.oArr[currentPosition][1],self.cWidth,self.cHeight);
+
+							self.ctx.drawImage(self.img,self.oWidth*self.randomArr[currentPosition][0],self.oHeight*self.randomArr[currentPosition][1],self.oWidth,self.oHeight,
+								self.cWidth*self.oArr[lastIndex][0],self.cHeight*self.oArr[lastIndex][1],self.cWidth,self.cHeight);
+
+							//隐藏盒子
+							self.currentBox.style.display="none";
+							self.willBox.style.display="none";
+							//更新随机数组(交换顺序)
+							var temp=self.randomArr[currentPosition];
+							self.randomArr.splice(currentPosition,1,self.randomArr[lastIndex]);
+							self.randomArr.splice(lastIndex,1,temp);
+							// console.log(self.randomArr);
+
+							console.log(self.gameOver());
+						}
+					}
+				},
+				gameOver: function (){
+					var self=this;
+					this.over=self.randomArr.join("")==self.oArr.join("")
+					return this.over;
+				}
+			}
+			w.DrawBg=function (cvs,ctx,oCon,currentBox,willBox,img,x,y){
+				return new DrawBg(cvs,ctx,oCon,currentBox,willBox,img,x,y);
+			}
+		})(window)
+	</script>
+	<script>
+		(function (w){
+			var cvs=document.querySelector("#cvs");
+			var ctx=cvs.getContext("2d");
+			var oCon=document.querySelector(".content")
+			var currentBox=document.querySelector(".currentBox")
+			var willBox=document.querySelector(".willBox")
+
+			loadImg({
+				bg: "images/timg.jpg"
+			},function (imgObj){
+				DrawBg(cvs,ctx,oCon,currentBox,willBox,imgObj.bg,4,3);
+			})
+			
+			
+		})(window)
+	</script>
+</body>
+</html>

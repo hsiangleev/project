@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>提示框效果</title>
+	<style>
+		.box{
+			width: 670px;
+			overflow: hidden;
+			border: 1px solid #000;
+			margin: 50px auto;
+			padding-bottom: 10px;
+		}
+		h3{
+			width: 100%;
+			height: 40px;
+			line-height: 40px;
+			margin: 0;
+			text-align: center;
+		}
+		.img{
+			width: 120px;
+			height: 120px;
+			position: relative;
+			border: 1px solid #999;
+			margin-left: 10px;
+			margin-top: 10px;
+			float: left;
+		}
+		img{
+			width: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: -1;
+		}
+		.article{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 120px;
+			background-color: #ddd;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="top">
+			<h3>名车车标展示-鼠标移过显示车标</h3>
+		</div>
+		<div class="content">
+			<div class="img">
+				<img src="images/1.jpg" alt="">
+				<div class="article">
+					<h4>BMW</h4>
+					<p>宝马汽车</p>
+				</div>
+			</div>
+			<div class="img">
+				<img src="images/2.jpg" alt="">
+				<div class="article">
+					<h4>Alfa Romeo</h4>
+					<p>阿尔法-罗米欧</p>
+				</div>
+			</div>
+			<div class="img">
+				<img src="images/3.jpg" alt="">
+				<div class="article">
+					<h4>Skoda</h4>
+					<p>斯柯达</p>
+				</div>
+			</div>
+			<div class="img">
+				<img src="images/4.jpg" alt="">
+				<div class="article">
+					<h4>Volkswagen</h4>
+					<p>大众汽车</p>
+				</div>
+			</div>
+			<div class="img">
+				<img src="images/5.jpg" alt="">
+				<div class="article">
+					<h4>Saab</h4>
+					<p>萨布牌轿车</p>
+				</div>
+			</div>
+			<div class="img">
+				<img src="images/6.jpg" alt="">
+				<div class="article">
+					<h4>Lamborghini</h4>
+					<p>兰博基尼</p>
+				</div>
+			</div>
+			<div class="img">
+				<img src="images/7.jpg" alt="">
+				<div class="article">
+					<h4>Porsche</h4>
+					<p>保时捷</p>
+				</div>
+			</div>
+			<div class="img">
+				<img src="images/8.jpg" alt="">
+				<div class="article">
+					<h4>Peugeot</h4>
+					<p>标致</p>
+				</div>
+			</div>
+			<div class="img">
+				<img src="images/9.jpg" alt="">
+				<div class="article">
+					<h4>Mercedes1</h4>
+					<p>梅赛德斯 奔驰</p>
+				</div>
+			</div>
+			<div class="img">
+				<img src="images/10.jpg" alt="">
+				<div class="article">
+					<h4>Buick</h4>
+					<p>别克汽车</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		var img=document.getElementsByClassName("img");
+		var aImg=document.getElementsByTagName("img");
+		for (var i = 0; i < img.length; i++) {
+			img[i].index=i;
+			img[i].onmouseenter=function () {
+				aImg[this.index].style.zIndex = '1';
+			}
+			img[i].onmouseleave=function () {
+				aImg[this.index].style.zIndex = '-1';
+			}
+		}
+	</script>
+</body>
+</html>

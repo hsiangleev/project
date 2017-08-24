@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>判断数字是否为两位数</title>
+	<style>
+		.box{
+			width: 400px;
+			height: 200px;
+			margin: 100px auto;
+		}
+		input{
+			width: 100px;
+			height: 30px;
+			line-height: 30px;
+			outline: none;
+			border: 1px solid #999;
+			background-color: #ccc;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<input type="text">
+		<button>判断是几位数</button>
+	</div>
+
+	<script>
+		var inp=document.getElementsByTagName("input")[0];
+		var btn=document.getElementsByTagName("button")[0];
+		inp.onkeyup=function () {
+			this.value=this.value.replace(/\D/g,'');   //只能输入非数字
+		}
+		btn.onclick=function () {
+			var val=inp.value;
+			if(val==""){
+				alert("请输入内容");
+			}else{
+				var arr=val.split("");
+				var len=arr.length;
+				alert("您输入的数字是"+len+"位数");
+			}
+				
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>仿腾讯微博效果</title>
+	<style>
+		body{
+			background-color: #666;
+		}
+		.box{
+			width: 460px;
+			min-height: 600px;
+			background-color: #fff;
+			margin: 10px auto;
+			border-radius: 10px;
+
+		}
+		form{
+			padding: 10px;
+		}
+		p{
+			margin: 0;
+		}
+		.inp{
+			margin-top: 5px;
+		}
+		.inp input{
+			height: 30px;
+			line-height: 30px;
+			position: relative;
+			top: -12px;
+			border-radius: 6px;
+			border: 1px solid #aaa;
+			box-shadow: inset 0px 3px 3px #ddd;
+		}
+		.inp img{
+			width: 35px;
+			height: 35px;
+			filter:alpha(opacity=30);  
+			opacity: 0.3;  
+			cursor: pointer;
+		}
+		.inp img.current,
+		.inp img:hover{
+			filter:alpha(opacity=100);  
+			opacity: 1;  
+		}
+		textarea{
+			width: 100%;
+			height: 80px;
+			resize: none;
+			border-radius: 6px;
+			border: 1px solid #aaa;
+			box-shadow: inset 0px 3px 3px #ddd;
+		}
+		.linear{
+			width: 100%;
+			height: 60px;
+			text-align: right;
+			background: linear-gradient(to bottom,#fff,#ddd);
+		}
+		.linear span{
+			text-align: right;
+			line-height: 60px;
+			color: #666;
+			margin-right: 10px;
+			font-size: 14px;
+		}
+		.linear span b{
+			font: 26px/60px Georgia, Tahoma, Arial;
+		}
+		.linear button{
+			width: 114px;
+			height: 32px;
+			border-radius: 5px;
+			position: relative;
+			top: 5px;
+			right: 10px;
+			cursor: pointer;
+			background: url("images/btn.png");
+		}
+		.linear button:hover{
+			background: url("images/btn.png") top -30px left 0px;
+		}
+		.content{
+			padding: 10px;
+		}
+		.content-top{
+			width: 100%;
+			height: 40px;
+			background: #e3eaec;
+    		border: 1px solid #dee4e7;
+		}
+		.content-top>span{
+			width: 80px;
+			height: 30px;
+			display: inline-block;
+			background-color: #fff;
+			margin: 11px 0 0 10px;
+			text-align: center;
+			line-height: 30px;
+			font-size: 14px;
+		}
+		ul{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		li{
+			padding: 8px 0;
+			position: relative;
+			border-bottom: 1px dashed #ccc;
+		}
+		li img{
+			float: left;
+		}
+		li .content-box{
+			float: left;
+			max-width: 330px;
+			margin: 0 15px;
+		}
+		li .content-box p{
+			margin: 0;
+			font-size: 14px;
+			word-wrap: break-word;
+		}
+		li .content-box p a{
+			text-decoration: none;
+			color: #c69;
+		}
+		li .content-box p a:hover{
+			text-decoration: underline;
+		}
+		li .content-box p span{
+			font-size: 12px;
+		}
+		li .content-box .time{
+			font-size: 12px;
+			color: #aaa;
+		}
+		li .content-box .delate{
+			width: 40px;
+			height: 20px;
+			line-height: 20px;
+			text-align: center;
+			background-color: #ddd;
+			position: absolute;
+			right: 10px;
+			bottom: 5px;
+			font-size: 12px;
+			cursor: pointer;
+			border-radius: 5px;
+			color: #666;
+		}
+		li .content-box .delate:hover{
+			color: #f69;
+		}
+		.clear{
+			clear: both;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<form>
+			<p>来 , 说说你在做什么 , 想什么</p>
+			<div class="inp">
+				<input type="text">
+				<img class="current" src="images/face1.gif" alt="">
+				<img src="images/face2.gif" alt="">
+				<img src="images/face3.gif" alt="">
+				<img src="images/face4.gif" alt="">
+				<img src="images/face5.gif" alt="">
+				<img src="images/face6.gif" alt="">
+			</div>
+			<textarea></textarea>
+		</form>
+		<div class="linear">
+			<span>还能输入<b>140</b>个字</span>
+			<button></button>
+		</div>
+		<div class="content">
+			<div class="content-top">
+				<span>大家在说</span>
+			</div>
+			<ul>
+				<!-- <li>
+					<img src="images/face.gif" alt="">
+					<div class="content-box">
+						<p><a href="javascript:;">日丶久生情:</a><span> 新增删除广播功能。新增删除广播功能。新增删除广播功能。新增删除除广播功能。新增删除广播功能。</span></p>
+						<div class="time">07月05日 15:14</div>
+						<div class="delate">删除</div>
+					</div>
+					<div class="clear"></div>
+				</li>
+				<li>
+					<img src="images/face.gif" alt="">
+					<div class="content-box">
+						<p><a href="javascript:;">日丶久生情:</a><span> 新增删除广播功能。新增删除广播功能。新增删除增删除广播功能。新增删除广播功能。新增删除广播功能。新增播功能。新增删除广播功能。新增删除广播功能。</span></p>
+						<div class="time">07月05日 15:14</div>
+						<div class="delate">删除</div>
+					</div>
+					<div class="clear"></div>
+				</li>
+				<li>
+					<img src="images/face.gif" alt="">
+					<div class="content-box">
+						<p><a href="javascript:;">日丶久生情:</a><span> 新增删除广播功能。新增删除广播能。新增删除广播功能。新增删除广播功能。新增删除广播功能。</span></p>
+						<div class="time">07月05日 15:14</div>
+						<div class="delate">删除</div>
+					</div>
+					<div class="clear"></div>
+				</li> -->
+			</ul>
+		</div>
+	</div>
+	<script src="../js/jquery-3.2.0.min.js"></script>
+	<script>
+		var form=$(".box form");
+		var inp=form.find("input");
+		var aimg=form.find("img");
+		var tex=form.find("textarea");
+		var oul=$(".box .content ul");
+		var btn=$(".box .linear button");
+		var oli="";
+		var arr=[
+			{
+				"name":"日丶久生情:",
+				"info":"新增删除广播功能。新增删除广播功能。新增删除增删除广播功能。新增删除广播功能。",
+				"time":"07月05日 15:14",
+				"myimg":"images/face.gif"
+			},
+			{
+				"name":"日丶久生情:",
+				"info":"新增删除广播功能。新增删除广播功能。新增删除增删除广播功能。新增删除广播功能。",
+				"time":"07月05日 15:14",
+				"myimg":"images/face4.gif"
+			}
+		];
+		var myIndex=1;
+		//鼠标选择img图片，获取图片index值
+		aimg.on("click",function () {
+			myIndex=$(this).index();
+			$(this).addClass("current").siblings("img").removeClass("current");
+			
+		})
+		//添加li 初始化
+		for(var i=0;i<arr.length;i++){
+			oli+=`<li>
+				<img src=`+arr[i].myimg+` alt="">
+				<div class="content-box">
+					<p><a href="javascript:;">`+arr[i].name+`:</a><span>`+arr[i].info+`</span></p>
+					<div class="time">`+arr[i].time+`</div>
+					<div class="delate">删除</div>
+				</div>
+				<div class="clear"></div>
+			</li>`;
+		}
+		oul.append(oli);
+		//点击广播
+		btn.on("click",function () {
+			var val1=inp.val();
+			var val2=tex.val();
+			var date=new Date();
+			var mon=date.getMonth()+1;
+			var day=date.getDate();
+			var h=date.getHours();
+			var min=date.getMinutes();
+			var sec=date.getSeconds();
+			var str=addZero(mon)+"月"+addZero(day)+"日"+addZero(h)+":"+addZero(min)+":"+addZero(sec);
+			//判断
+			if(val1=="" || val2==""){
+				alert("请输入内容");
+				return ;
+			}
+			//添加到数组
+			arr.push({
+				"name":val1,
+				"info":val2,
+				"time":str,
+				"myimg":"images/face"+myIndex+".gif"
+			})
+			//把当前写的添加
+			oli=`<li>
+				<img src=`+arr[arr.length-1].myimg+` alt="">
+				<div class="content-box">
+					<p><a href="javascript:;">`+arr[arr.length-1].name+`:</a><span>`+arr[arr.length-1].info+`</span></p>
+					<div class="time">`+arr[arr.length-1].time+`</div>
+					<div class="delate">删除</div>
+				</div>
+				<div class="clear"></div>
+			</li>`;
+			oul.append(oli);
+
+			//删除新增的
+			$(".delate").on("click",function () {
+				$(this).parents("li").slideUp(300);
+			})
+		})
+		//为时间添加0
+		function addZero(k) {
+			if(k<10){
+				k="0"+k;
+			}
+			return k;
+		}
+		//删除默认自带的
+		$(".delate").on("click",function () {
+			$(this).parents("li").slideUp(300);
+		})
+	</script>
+</body>
+</html>
