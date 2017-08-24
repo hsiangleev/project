@@ -10,7 +10,7 @@
 >   1. [wp](http://www.hsianglee.top/bootstrap/wp/)
 >   2. [ghost](http://www.hsianglee.top/bootstrap/ghost/)
 >   3. [xfc](http://www.hsianglee.top/bootstrap/xfc/)
->   4. [我的博客](http://www.hsianglee.top/blog/)<br />
+> + [我的博客](http://www.cnblogs.com/hsianglee/)<br />
 > + [小项目](http://www.hsianglee.top/fgm/)<br />
 <br />
 
