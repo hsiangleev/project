@@ -1,5 +1,6 @@
 # 我用bootstrap写的练习
 
+> + [我的博客](http://www.cnblogs.com/hsianglee/)<br />
 > + 小游戏
 >   1. [飞翔的小鸟](http://www.hsianglee.top/fly/)<br />
 >   2. [矩形躲避](http://www.hsianglee.top/line/)<br />
@@ -9,7 +10,6 @@
 >   1. [wp](http://www.hsianglee.top/bootstrap/wp/)
 >   2. [ghost](http://www.hsianglee.top/bootstrap/ghost/)
 >   3. [xfc](http://www.hsianglee.top/bootstrap/xfc/)
-> + [我的博客](http://www.cnblogs.com/hsianglee/)<br />
 > + [小项目](http://www.hsianglee.top/fgm/)<br />
 > + 组件
 >   1. [弹出层](http://www.hsianglee.top/component/alert.html)<br />
