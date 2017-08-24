@@ -1,4 +1,3 @@
-# 我用bootstrap写的练习
 
 > + [我的博客](http://www.cnblogs.com/hsianglee/)<br />
 > + 小游戏
