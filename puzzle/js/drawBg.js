@@ -99,7 +99,7 @@
 			//找到图片所在位置
 			var currentPosiLeft=this.oArr[currentPosition][0]*this.cPhoneWidth;
 			var currentPosiTop=this.oArr[currentPosition][1]*this.cPhoneHeight;
-			console.log(currentPosition)
+			// console.log(currentPosition)
 			
 			//修改盒子宽高
 			ele.style.width=this.cPhoneWidth+"px";

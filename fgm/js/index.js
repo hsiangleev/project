@@ -269,7 +269,7 @@
 			        },
 			        {
 			            text: "拼图小游戏",
-			            href: "lesson9/02.html"
+			            href: "../puzzle/index.html"
 			        },
 			        {
 			            text: "模拟表单控件",

@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-	<!-- z-index: bg:-1; content: 1; canvas: 0 ; over: 10; begin: 9; -->
+	<!-- z-index: bg:-1; content: 1; canvas: 0 ; over: 3; begin: 2; -->
 	<!-- 背景提示图 -->
 	<div class="bg"></div>
 	<!-- 当前模拟画布拖拽的盒子节点 -->
@@ -29,12 +29,16 @@
 		<div class="simple">
 			<i class="current">简单(2*3)</i>
 			<i>中等(4*3)</i>
+			<i>一般(4*6)</i>
 			<i>困难(8*6)</i>
-			<i>过不去(10*10)</i>
-			<i>试试看(40*30)</i>
+			<i>试试看(10*10)</i>
+		</div>
+		<div class="select">
+			<label for="">选择关卡:(1-<span>1</span>)</label>
+			<input type="text" value="1">
 		</div>
 		<ul>
-			<li>选择难度，点击开始，进行游戏</li>
+			<li>选择关卡，选择难度，点击开始，进行游戏</li>
 			<li>按下鼠标，拖动到需要交换的地方松开</li>
 			<li>若点击图片则只与上次移动的那张交换(默认第一张)</li>
 			<li>注意: 鼠标拖动后不要在界面外松开</li>

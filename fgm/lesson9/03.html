@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>模拟表单控件</title>
+	<style>
+		html,
+		body{
+			margin: 0;
+			padding: 0;
+			font-size: 12px;
+		}
+		#form1{
+			width: 400px;
+			height: 500px;
+			margin: 10px 0 0 30px;
+			padding: 20px;
+			border: 2px dashed #ccc;
+		}
+		.item{
+			margin: 5px 0;
+		}
+		.outer{
+			width: 200px;
+			height: 25px;
+			display: inline-block;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			box-shadow: 1px 1px 2px #ccc inset;
+		}
+		.small{
+			width: 190px;
+			height: 22px;
+			margin: 1px 5px;
+			border: 0;
+		}
+		.olong{
+			width: 300px;
+		}
+		.long{
+			width: 290px;
+		}
+		.olongwid{
+			width: 300px;
+			height: 90px;
+		}
+		textarea{
+			border: none;
+			resize: none;
+			margin: 5px 0 0 6px;
+		}
+		.wellSelect{
+			position: relative;
+			display: inline-block;
+		}
+		.item label{
+			display: inline-block;
+			height: 25px;
+			width: 40px;
+		}
+		.item select{
+			display: none;
+		}
+		.item .select{
+			display: inline-block;
+			width: 80px;
+			height: 25px;
+		}
+		.item .select ul{
+			margin: 0;
+			padding: 0;
+			display: none;
+			list-style: none;
+			position: absolute;
+			top: 25px;
+		}
+		.item .select li{
+			width: 60px;
+			height: 25px;
+			background-color: #555;
+			color: #fff;
+			line-height: 25px;
+			text-align: center;
+			cursor: pointer;
+		}
+		.item .select li:hover{
+			background-color: #999;
+		}
+		.item .select span{
+			display: inline-block;
+			background-color: #666;
+			width: 60px;
+			height: 25px;
+			color: #fff;
+			cursor: pointer;
+			text-align: center;
+			line-height: 25px;
+			position: absolute;
+			top: 0;
+		}
+		.item .select .selectR{
+			width: 16px;
+			height: 23px;
+			position: absolute;
+			top: 0;
+			left: 60px;
+			text-align: center;
+			line-height: 23px;
+			font-size: 12px;
+			border: 1px solid #ccc;
+			border-radius: 0 7px 7px 0;
+			cursor: pointer;
+		}
+		.item .button{
+			border-radius: 5px;
+			background-color: #69f;
+		}
+	</style>
+</head>
+<body>
+	<form method="get" id="form1">
+		<!-- 姓名 -->
+		<div class="item">
+			<label for="username">姓名：</label>
+			<div class="outer">
+				<input type="text" name="username" id="username" class="small">
+			</div>
+		</div>
+		<!-- 电话 -->
+		<div class="item">
+			<label for="tel">电话：</label>
+			<div class="outer">
+				<input type="text" name="tel" id="tel" class="small">
+			</div>
+		</div>
+		<!-- 性别 -->
+		<div class="item">
+			<label for="">性别：</label>
+			<div class="wellSelect">
+				<div class="select">
+					<span>男</span>
+					<div class="selectR">▼</div>
+					<ul>
+						<li>男</li>
+						<li>女</li>
+					</ul>
+				</div>
+				<select name="sex" id="sex" class="sex">
+					<option value="男" selected="selected">男</option>
+					<option value="女">女</option>
+				</select>
+			</div>
+		</div>
+		<!-- 生日 -->
+		<div class="item">
+			<label for="">生日：</label>
+			<div class="wellSelect">
+				<div class="select">
+					<span>1月</span>
+					<div class="selectR">▼</div>
+					<ul>
+						<li>1月</li>
+						<li>2月</li>
+						<li>3月</li>
+						<li>4月</li>
+						<li>5月</li>
+						<li>6月</li>
+						<li>7月</li>
+						<li>8月</li>
+						<li>9月</li>
+						<li>10月</li>
+						<li>11月</li>
+						<li>12月</li>
+					</ul>
+				</div>
+				<select name="month" class="month">
+					<option value="1月" selected="selected">1月</option>
+					<option value="2月">2月</option>
+					<option value="3月">3月</option>
+					<option value="4月">4月</option>
+					<option value="5月">5月</option>
+					<option value="6月">6月</option>
+					<option value="7月">7月</option>
+					<option value="8月">8月</option>
+					<option value="9月">9月</option>
+					<option value="10月">10月</option>
+					<option value="11月">11月</option>
+					<option value="12月">12月</option>
+				</select>
+			</div>
+			<div class="wellSelect">
+				<div class="select">
+					<span>1号</span>
+					<div class="selectR">▼</div>
+					<ul>
+						<li>1号</li>
+						<li>2号</li>
+						<li>3号</li>
+						<li>4号</li>
+						<li>5号</li>
+						<li>6号</li>
+						<li>7号</li>
+						<li>8号</li>
+						<li>9号</li>
+						<li>10号</li>
+						<li>11号</li>
+						<li>12号</li>
+						<li>13号</li>
+						<li>14号</li>
+						<li>15号</li>
+						<li>16号</li>
+					</ul>
+				</div>
+				<select name="day" class="day">
+					<option value="1号" selected="selected">1号</option>
+					<option value="2号">2号</option>
+					<option value="3号">3号</option>
+					<option value="4号">4号</option>
+					<option value="5号">5号</option>
+					<option value="6号">6号</option>
+					<option value="7号">7号</option>
+					<option value="8号">8号</option>
+					<option value="9号">9号</option>
+					<option value="10号">10号</option>
+					<option value="11号">11号</option>
+					<option value="12号">12号</option>
+					<option value="13号">13号</option>
+					<option value="14号">14号</option>
+					<option value="15号">15号</option>
+					<option value="16号">16号</option>
+				</select>
+			</div>
+
+			<div class="wellSelect">
+				<div class="select">
+					<span>1990年</span>
+					<div class="selectR">▼</div>
+					<ul>
+						<li>1990年</li>
+						<li>1991年</li>
+						<li>1992年</li>
+						<li>1993年</li>
+						<li>1994年</li>
+						<li>1995年</li>
+						<li>1996年</li>
+						<li>1997年</li>
+						<li>1998年</li>
+						<li>1999年</li>
+					</ul>
+				</div>
+				<select name="year" class="year">
+					<option value="1990年" selected="selected">1990年</option>
+					<option value="1991年">1991年</option>
+					<option value="1992年">1992年</option>
+					<option value="1993年">1993年</option>
+					<option value="1994年">1994年</option>
+					<option value="1995年">1995年</option>
+					<option value="1996年">1996年</option>
+					<option value="1997年">1997年</option>
+					<option value="1998年">1998年</option>
+					<option value="1999年">1999年</option>
+				</select>
+			</div>
+		</div>
+		<!-- 婚姻 -->
+		<div class="item">
+			<label for="">婚姻：</label>
+			<input type="radio" name="婚姻" value="已婚">已婚
+			<input type="radio" name="婚姻" value="未婚" checked="checked">未婚
+		</div>
+		<!-- 爱好 -->
+		<div class="item">
+			<label for="">爱好：</label>
+			<input type="checkbox" name="爱好" value="吃饭">吃饭
+			<input type="checkbox" name="爱好" value="睡觉" checked="checked">睡觉
+			<input type="checkbox" name="爱好" value="上网" checked="checked">上网
+			<input type="checkbox" name="爱好" value="打游戏">打游戏
+		</div>
+		<!-- 地址 -->
+		<div class="item">
+			<label for="address">地址：</label>
+			<div class="outer olong">
+				<input type="text" name="address" id="address" class="small long">
+			</div>
+		</div>
+		<!-- 备注 -->
+		<div class="item">
+			<label for="">备注：</label>
+			<div class="outer olongwid">
+				<textarea name="beizhu" cols="38" rows="5"></textarea>
+			</div>
+		</div>
+		<!-- 说明 -->
+		<div class="item">
+			<label for="">说明：</label>
+			<div class="outer olongwid">
+				<textarea name="intru" cols="38" rows="5"></textarea>
+			</div>
+		</div>
+		<!-- 提交 -->
+		<div class="item">
+			<label for=""></label>
+			<input type="submit" class="button">
+		</div>
+	</form>
+	
+	<script>
+		var aWel=document.querySelectorAll(".wellSelect");
+		var aUl=document.querySelectorAll("ul");
+		var oSel=document.querySelectorAll("select");
+		var oldIndex;
+		for (var i = 0,len=aUl.length; i < len; i++) {
+			aWel[i].index=i;
+			aWel[i].switch=false;
+			aWel[i].onclick=function (e){
+				var e=event || window.event;
+				e.preventDefault();
+				e.stopPropagation();
+				//隐藏上一次的
+				if(oldIndex!=undefined){
+					aUl[oldIndex].style.display="none";
+					aUl[oldIndex].style.zIndex=0;
+				}
+				this.switch=!this.switch;
+				if(this.switch){
+					aUl[this.index].style.display="block";
+					aUl[this.index].style.zIndex=1;
+				}else{
+					aUl[this.index].style.display="none";
+					aUl[this.index].style.zIndex=0;
+				}
+				oldIndex=this.index;
+				//点击document隐藏，switch全部变为false
+				document.onclick=function (){
+					for (var i = 0,len=aUl.length; i < len; i++) {
+						aWel[i].switch=false;
+						aUl[i].style.display="none";
+						aUl[i].style.zIndex=0;
+					}
+				}
+
+				var oSpan=aWel[this.index].querySelector("span");
+				var aOption=aWel[this.index].querySelectorAll("option");
+				var aLi=aUl[this.index].querySelectorAll("li");
+				for (var i = 0,len=aLi.length; i < len; i++) {
+					aLi[i].index=i;
+					aLi[i].onclick=function (){
+						//修改li的text值
+						var text=this.innerHTML;
+						oSpan.innerHTML=text;
+						//修改selected的值
+						for (var i = 0,len=aOption.length; i < len; i++) {
+							aOption[i].selected=false;
+						}
+						aOption[this.index].selected=true;
+					}
+				}
+			}
+		}
+	</script>
+</body>
+</html>

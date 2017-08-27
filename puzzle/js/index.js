@@ -1,3 +1,8 @@
+
+/**
+* 直接在下方loadImg对象中添加图片
+* 格式: (bg10: "images/timg10.jpg")
+*/
 (function (w){
 	var cvs=document.querySelector("#cvs");
 	var ctx=cvs.getContext("2d");
@@ -22,6 +27,10 @@
 	//初始化关卡难度系数 ( difficultX * difficultY )
 	var difficultX=2;
 	var difficultY=3;
+	//选择关卡
+	var oSel=document.querySelector(".select");
+	var oInp=oSel.querySelector("input");
+	var oSelSpan=oSel.querySelector("span");
 	loadImg({
 		bg1: "images/timg1.jpg",
 		bg2: "images/timg2.jpg",
@@ -30,7 +39,9 @@
 		bg5: "images/timg5.jpg",
 		bg6: "images/timg6.jpg",
 		bg7: "images/timg7.jpg",
-		bg8: "images/timg8.jpg"
+		bg8: "images/timg8.jpg",
+		bg9: "images/timg9.jpg",
+		bg10: "images/timg10.jpg"
 	},function (imgObj){
 
 		function Entrance(){
@@ -39,6 +50,7 @@
 
 			this._saveKey();
 			this._difficult();
+			this.selectNum();
 			this._star();
 			this._next();
 		}
@@ -77,17 +89,33 @@
 							difficultX=4;
 							difficultY=3;
 						}else if(this.index==2){
-							difficultX=8;
+							difficultX=4;
 							difficultY=6;
 						}else if(this.index==3){
+							difficultX=8;
+							difficultY=6;
+						}else{
 							difficultX=10;
 							difficultY=10;
-						}else{
-							difficultX=40;
-							difficultY=30;
 						}
 					})
 				}
+			},
+			//选择关卡
+			selectNum: function (){
+				var self=this;
+				oSelSpan.innerHTML=this.loadImgKey.length;
+				EventUtil.addHandler(oInp,"blur",function (){
+					if(this.value>self.loadImgKey.length){
+						alert("最大关卡为: "+self.loadImgKey.length)
+						this.value=self.loadImgKey.length;
+					}
+					if(this.value<1){
+						alert("最小关卡为: 1")
+						this.value=1;
+					}
+					checkPoint=this.value;
+				})
 			},
 			_star: function (){
 				var self=this;
@@ -97,8 +125,14 @@
 					oCurrent=document.querySelector(".current")
 					oBegin.style.display="none";
 					oCurPoint.style.display="block";
+					aSpan[0].innerHTML=checkPoint;
 					aSpan[1].innerHTML=oCurrent.innerHTML;
 					self._init();
+					//先判断是否是最后一关
+					if(checkPoint==self.loadImgKey.length){
+						oH2.innerHTML="哇哦，好腻害，您竟然完成了所有关卡!!!";
+						this.value="返回";
+					}
 					//先设置第一关
 					DrawBg(cvs,ctx,oCon,currentBox,willBox,imgObj["bg"+checkPoint],difficultX,difficultY,aOver);
 				})
