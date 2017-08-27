@@ -174,12 +174,12 @@ i:hover{
 }
 @media screen and (max-width: 768px) {
 	.select{
-		top: 10%;
+		top: 8%;
 		left: 50%;
 		margin-left: -48px;
 	}
 	.simple{
-		top: 18%;
+		top: 16%;
 		left: 50%;
 		margin-left: -38px;
 	}

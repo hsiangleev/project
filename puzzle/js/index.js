@@ -114,6 +114,10 @@
 						alert("最小关卡为: 1")
 						this.value=1;
 					}
+					if(typeof this.value != "number"){
+						alert("请输入数字");
+						this.value=1;
+					}
 					checkPoint=this.value;
 				})
 			},
