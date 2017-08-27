@@ -66,7 +66,16 @@
 			this.eleHead.style.left="100px";
 			this.eleHead.style.top="100px";
 		},
+		
+		/**
+		* contrary: 按键是否与当前方向相反
+		* boolean1: 左
+		* boolean2: 上
+		* boolean3: 下
+		* boolean4: 右
+		*/
 		direction: function (contrary,boolean1,boolean2,boolean3,boolean4){
+			// (不能反向移动，即当前若向右，则按不了左键)
 			if(contrary){
 				this.left=boolean1;
 				this.up=boolean2;
