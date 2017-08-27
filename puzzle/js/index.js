@@ -106,19 +106,22 @@
 				var self=this;
 				oSelSpan.innerHTML=this.loadImgKey.length;
 				EventUtil.addHandler(oInp,"blur",function (){
-					if(this.value>self.loadImgKey.length){
+					//先转换为整数字(非数字转为NaN)
+					var val=parseInt(this.value);
+					this.value=val;
+					if(val>self.loadImgKey.length){
 						alert("最大关卡为: "+self.loadImgKey.length)
 						this.value=self.loadImgKey.length;
 					}
-					if(this.value<1){
+					if(val<1){
 						alert("最小关卡为: 1")
 						this.value=1;
 					}
-					if(typeof this.value != "number"){
+					if(isNaN(val)){
 						alert("请输入数字");
 						this.value=1;
 					}
-					checkPoint=this.value;
+					checkPoint=val;
 				})
 			},
 			_star: function (){
