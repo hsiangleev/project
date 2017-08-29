@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.box{
+			width: 100px;
+			height: 40px;
+			border: 1px solid #ccc;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div id="c-code">
+			<canvas id="c-cvs"></canvas>
+		</div>
+	</div>
+
+	<script src="js/c-randomCode.js"></script>
+	<script>
+		var box=document.querySelector(".box");
+		drawBg();
+		box.onclick=function (){
+			drawBg();
+			console.log(drawBg().textArr)
+		}
+	</script>
+</body>
+</html>
