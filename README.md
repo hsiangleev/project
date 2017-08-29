@@ -15,4 +15,5 @@
 >   2. [加载动画](http://www.hsianglee.top/component/load.html)<br />
 >   3. [导航条](http://www.hsianglee.top/component/nav.html)<br />
 >   4. [滚动条](http://www.hsianglee.top/component/scroll.html)<br />
->   4. [轮播图](http://www.hsianglee.top/component/carousel.html)<br />
+>   5. [轮播图](http://www.hsianglee.top/component/carousel.html)<br />
+>   6. [验证码](http://www.hsianglee.top/component/randomCode.html)<br />
