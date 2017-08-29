@@ -1,46 +1,51 @@
 
 /**
 * html模板: 
-*	<div id="c-code">
+*	<div class="c-code">
 *		<canvas id="c-cvs"></canvas>
 *	</div>
 *
 * 使用: 
 * 1. 引用js文件
-* 1. 在模板父层添加一个盒子，宽高必须，验证码宽高与之相等
-* 2. 每调用一次drawBg()，刷新一次
-* 3. drawBg().textArr 得到当前的文本内容存为数组
+* 2. 在模板之外添加一个盒子，宽高必须给，验证码宽高与之相等
+* 3. 每调用一次drawBg()，刷新一次
+* 4. drawBg().textArr 得到当前的文本内容存为数组
+* 5. drawBg().text 得到当前的文本内容存为字符串
 */
 
 (function (w){
-	var oCode=document.getElementById("c-code");
+	var oCode=document.getElementsByClassName("c-code")[0];
 	var cvs=document.getElementById("c-cvs");
 	var ctx=cvs.getContext("2d");
+	//设置整个内容宽高与父盒子相等
 	oCode.style.width="100%";
 	oCode.style.height="100%";
 	
 	function drawBg(){
+		//获取盒子宽高
 		this.width=oCode.offsetWidth;
 		this.height=oCode.offsetHeight;
-		this.color="#";
+		//随机点坐标
 		this.randomX=0;
 		this.randomY=0;
-		//存放数据
+		//存放验证码内容(数组)
 		this.textArr=[];
+		//存放验证码内容(字符串)
+		this.text="";
 
 		this._init();
-		this.randomColor();
 		this.draw();
-		this.randomPoint();
 		this.addPoint();
 		this.addText();
 	}
 	drawBg.prototype={
 		constructor: drawBg,
+		//设置画布宽高
 		_init: function (){
 			cvs.width=this.width;
 			cvs.height=this.height;
 		},
+		//获取随机的颜色
 		randomColor: function (){
 			var colorStr="0123456789abcdef";
 			var colorArr=colorStr.split("");
@@ -53,12 +58,14 @@
 			}
 			return this.color;
 		},
+		//绘制背景
 		draw: function (){
 			//每次创建先清除画布
 			ctx.clearRect(0,0,this.width,this.height);
-			ctx.fillStyle=this.color;
+			ctx.fillStyle=this.randomColor();
 			ctx.fillRect(0,0,this.width,this.height);
 		},
+		//绘制随机点
 		randomPoint: function (){
 			this.randomX=Math.random()*this.width;
 			this.randomY=Math.random()*this.height;
@@ -66,6 +73,7 @@
 			ctx.fillRect(this.randomX,this.randomY,2,2);
 			ctx.fill();
 		},
+		//添加多个随机点
 		addPoint: function (){
 			//生成的点的个数等于(宽*高/10)
 			var num=Math.floor(this.width*this.height/10);
@@ -73,9 +81,11 @@
 				this.randomPoint();
 			}
 		},
+		//添加文本
 		addText: function (){
 			// 0-61随机数
 			var randomNum;
+			//textData: (0-9 a-z A-Z)
 			var textData=[];
 			for(var i=48;i<58;i++){
 				textData.push(String.fromCharCode(i));
@@ -87,17 +97,19 @@
 				textData.push(String.fromCharCode(i));
 			}
 			
-			var text="";
+			this.text="";
+			this.textArr=[];
 			for(var i=0;i<4;i++){
 				randomNum=Math.floor(Math.random()*62);
-				text+=textData[randomNum];
+				this.text+=textData[randomNum];
 				this.textArr.push(textData[randomNum]);
 			}
+			//绘制文本
 			ctx.font="bold 25px Arial";
 			ctx.textAlign="center";
 			ctx.textBaseline="middle";
 			ctx.fillStyle=this.randomColor;
-			ctx.fillText(text,this.width/2,this.height/2);
+			ctx.fillText(this.text,this.width/2,this.height/2);
 		}
 	}
 
