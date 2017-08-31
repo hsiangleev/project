@@ -1,4 +1,4 @@
-## 凉宫西辰的网站
+## 凉宫西辰
 
 ***
 > + [我的博客](http://www.cnblogs.com/hsianglee/)<br />
