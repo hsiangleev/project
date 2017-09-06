@@ -16,10 +16,10 @@
 > 4. vue知识点
 > 	* 父子组件传递信息使用props
 > 	* 模板编译之前获取el宽高 <br>
-> 		beforeMount: function (){<br>
-> 		    this.elWidth=this.$el.clientWidth;<br>
-> 		    this.elHeight=this.$el.clientHeight;<br>
-> 		}<br>
+    > 		beforeMount: function (){<br>
+    > 		    this.elWidth=this.$el.clientWidth;<br>
+    > 		    this.elHeight=this.$el.clientHeight;<br>
+    > 		}<br>
 > 	* 子组件获取el宽高 ( this.$root.elWidth,this.$root.elHeight )
 > 	* 模板编译完成后更新子组件信息<br>
 > 			mounted: function (){<br>
