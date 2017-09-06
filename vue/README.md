@@ -15,11 +15,11 @@
 > 	* 边界判断：横轴坐标范围超过最大值则加号变减号
 > 4. vue知识点
 > 	* 父子组件传递信息使用props
-> 	* 模板编译之前获取el宽高 
-> 		beforeMount: function (){
-> 		    this.elWidth=this.$el.clientWidth;
-> 		    this.elHeight=this.$el.clientHeight;
-> 		}
+> 	* 模板编译之前获取el宽高 <br>
+> 		beforeMount: function (){<br>
+> 		    this.elWidth=this.$el.clientWidth;<br>
+> 		    this.elHeight=this.$el.clientHeight;<br>
+> 		}<br>
 > 	* 子组件获取el宽高 ( this.$root.elWidth,this.$root.elHeight )
 > 	* 模板编译完成后更新子组件信息<br>
 > 			mounted: function (){<br>
@@ -37,24 +37,24 @@
 
 ###vue拼图
 >1. 定义组件box
-2. 使用slot在父组件插入button，调用子组件this.$children[0].randomNum()重新生成随机数组达到重新开始游戏的目的
+> 2. 使用slot在父组件插入button，调用子组件this.$children[0].randomNum()重新生成随机数组达到重新开始游戏的目的
 3.  子组件中使用v-for生成li，再添加样式时使用 (!val) 给空值添加样式
-4.  代码思路：
-	1. 定义两个数组，一个为完成后的，一个为打乱的
-	打乱数组代码: <br>
-		this.randomArr.sort(function (a,b){<br>
-				return Math.random()-0.5;<br>
-	})<br>
-	2. 每次移动前获取点击的 value 值，和其上下左右的 value 值
-	3. 判断若四周有value值为空，则交换数组顺序
-	交换数组顺序代码: <br>
-		this.randomArr.splice(index,1,lNum);<br>
-	this.randomArr.splice(index-1,1,cNum);<br>
-	4. 每次移动后判断两个数组是否相等
-	代码: <br>
-		if(this.numArr.join(" ")==this.randomArr.join(" ")){<br>
-				return true;<br>
-		}else{<br>
-				return false;<br>
-	}<br>
-5. [链接地址]( http://hsianglee.top/vue/puzzleVue.html )
+> 4.  代码思路：
+> 	1. 定义两个数组，一个为完成后的，一个为打乱的
+> 	打乱数组代码: <br>
+> 		this.randomArr.sort(function (a,b){<br>
+> 				return Math.random()-0.5;<br>
+> 	})<br>
+> 	2. 每次移动前获取点击的 value 值，和其上下左右的 value 值
+> 	3. 判断若四周有value值为空，则交换数组顺序
+> 	交换数组顺序代码: <br>
+> 		this.randomArr.splice(index,1,lNum);<br>
+> 	this.randomArr.splice(index-1,1,cNum);<br>
+> 	4. 每次移动后判断两个数组是否相等
+> 	代码: <br>
+> 		if(this.numArr.join(" ")==this.randomArr.join(" ")){<br>
+> 				return true;<br>
+> 		}else{<br>
+> 				return false;<br>
+> 	}<br>
+> 5. [链接地址]( http://hsianglee.top/vue/puzzleVue.html )
