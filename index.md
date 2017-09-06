@@ -6,7 +6,8 @@
 >   1. [飞翔的小鸟](http://www.hsianglee.top/fly/)<br />
 >   2. [矩形躲避](http://www.hsianglee.top/line/)<br />
 >   3. [简易贪吃蛇](http://www.hsianglee.top/snake/)<br />
->   4. [拼图](http://www.hsianglee.top/puzzle/)<br />
+>   4. [js图片拼图](http://www.hsianglee.top/puzzle/)<br />
+>   5. [vue小拼图](http://hsianglee.top/vue/puzzleVue.html)<br />
 > + bootstrap小案例
 >   1. [wp](http://www.hsianglee.top/bootstrap/wp/)
 >   2. [ghost](http://www.hsianglee.top/bootstrap/ghost/)
