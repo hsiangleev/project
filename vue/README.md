@@ -28,15 +28,15 @@
 > 	* 模板编译完成后更新子组件信息<br>
 > ```javascript
 > 	mounted: function (){
-> 	 //根据父组件信息更新小球数据
-> 			   this.addStyle.top=this.message.top;
-> 			    this.addStyle.left=this.message.left;
-> 			    this.speedX=this.message.speedX;
-> 			    this.speedY=this.message.speedY;
-> 			    //小球初始坐标
-> 			    this.oleft=parseInt(this.addStyle.left);
-> 			    this.otop=parseInt(this.addStyle.top);
-> 			    this.move();
+> 	//根据父组件信息更新小球数据
+> 	this.addStyle.top=this.message.top;
+> 	this.addStyle.left=this.message.left;
+> 	this.speedX=this.message.speedX;
+> 	this.speedY=this.message.speedY;
+> 	//小球初始坐标
+> 	this.oleft=parseInt(this.addStyle.left);
+> 	this.otop=parseInt(this.addStyle.top);
+> 	this.move();
 > 	}
 > ```
 > 5. [链接地址]( http://hsianglee.top/vue/moveBall.html )
