@@ -20,8 +20,8 @@
 > 	* 模板编译之前获取el宽高 <br>
 > ```javascript
 > beforeMount: function (){
-> this.elWidth=this.$el.clientWidth;
-> this.elHeight=this.$el.clientHeight;
+>   this.elWidth=this.$el.clientWidth;
+>   this.elHeight=this.$el.clientHeight;
 > }
 > ```
 > 	* 子组件获取el宽高 ( this.$root.elWidth,this.$root.elHeight )
@@ -29,14 +29,14 @@
 > ```javascript
 > 	mounted: function (){
 > 	//根据父组件信息更新小球数据
-> 	this.addStyle.top=this.message.top;
-> 	this.addStyle.left=this.message.left;
-> 	this.speedX=this.message.speedX;
-> 	this.speedY=this.message.speedY;
-> 	//小球初始坐标
-> 	this.oleft=parseInt(this.addStyle.left);
-> 	this.otop=parseInt(this.addStyle.top);
-> 	this.move();
+> 	  this.addStyle.top=this.message.top;
+> 	  this.addStyle.left=this.message.left;
+> 	  this.speedX=this.message.speedX;
+> 	  this.speedY=this.message.speedY;
+> 	  //小球初始坐标
+> 	  this.oleft=parseInt(this.addStyle.left);
+> 	  this.otop=parseInt(this.addStyle.top);
+> 	  this.move();
 > 	}
 > ```
 > 5. [链接地址]( http://hsianglee.top/vue/moveBall.html )
@@ -52,7 +52,7 @@
 > 	打乱数组代码: <br>
 > ```javascript
 > 	this.randomArr.sort(function (a,b){
-> 		return Math.random()-0.5;
+> 	  return Math.random()-0.5;
 > 	})
 > ```
 > 	* 每次移动前获取点击的 value 值，和其上下左右的 value 值
