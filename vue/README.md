@@ -58,14 +58,14 @@
 > 	* 每次移动前获取点击的 value 值，和其上下左右的 value 值
 > 	* 判断若四周有value值为空，则交换数组顺序
 > 	交换数组顺序代码: <br>
-> 		this.randomArr.splice(index,1,lNum);<br>
+> 	this.randomArr.splice(index,1,lNum);<br>
 > 	this.randomArr.splice(index-1,1,cNum);<br>
 > 	* 每次移动后判断两个数组是否相等
 > 	代码: <br>
 > ```javascript
 > 	if(this.numArr.join(" ")==this.randomArr.join(" ")){
 > 		return true;
-> 		}else{
+> 	}else{
 > 		return false;
 > 	}
 > ```
