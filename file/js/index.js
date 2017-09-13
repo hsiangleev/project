@@ -156,8 +156,10 @@ var temWorks={
 		},
 		slideUp: function (){
 			var oTop=parseFloat(this.imgStyle.top);
-			if(oTop>=0){
+			if(oTop>=-0.95){
 				this.btn1Style=true;
+			}
+			if(oTop>=0){
 				return;
 			}
 			this.imgStyle.top=oTop+0.95+"rem";
@@ -167,8 +169,10 @@ var temWorks={
 			var oTop=parseFloat(this.imgStyle.top);
 
 			var maxHeight=this.$el.querySelector(".imgBox").clientHeight/100;
-			if(oTop<=-maxHeight+0.95){
+			if(oTop<=-maxHeight+0.95+0.95){
 				this.btn2Style=true;
+			}
+			if(oTop<=-maxHeight+0.95){
 				return;
 			}
 			this.imgStyle.top=oTop-0.95+"rem";

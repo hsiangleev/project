@@ -149,13 +149,47 @@
 		padding: 0 0.1rem;
 		border-radius: 0.05rem;
 	}
-	.nav a:hover{
-		background-color: #f69;
-		color: #fff;
+	@media screen and (min-width: 768px){
+		.nav a:hover{
+			background-color: #f69;
+			color: #fff;
+		}
 	}
 	.current{
 		background-color: #f69;
 		color: #fff;
+	}
+	@media screen and (max-width: 768px){
+		.nav{
+			padding: 0;
+		}
+		.nav li{
+			float: none;
+			width: 100%;
+		}
+		.nav li::after{
+			content: "";
+			margin: 0;
+		}
+		.nav a{
+			text-align: center;
+			width: 100%;
+			padding: 0;
+		}
+		@keyframes bg{
+			0%{
+				top: 0;
+				opacity: 0;
+			}
+			15%{
+				top: 15%;
+				opacity: 1;
+			}
+			100%{
+				top: 15%;
+				opacity: 1;
+			}
+		}
 	}
 	/************** 导航条结束 ***************/
 
@@ -287,4 +321,39 @@
 		left: 0;
 		z-index: 1;
 	}
+	@media screen and (max-width: 768px){
+		.works ul{
+			width: 0.6rem;
+		}
+		.content{
+			height: 3rem;
+			top: 45%;
+		}
+		.works .works-content{
+			width: 72%;
+		}
+		.works .imgContent{
+			width: 45%;
+		}
+	}
 	/************** 内容开始 ***************/
+
+	/************** 内容开始 ***************/
+	
+	.home .textBox{
+		width: 1.6rem;
+		position: absolute;
+		left: 50%;
+		margin-left: -0.8rem;
+	}
+	.home .textBox p{
+		width: 0.3rem;
+		color: #6f9;
+		float: right;
+		margin: 0 0.05rem;
+		text-align: center;
+		font-size: 0.25rem;
+	}
+
+	/************** 内容开始 ***************/
+
