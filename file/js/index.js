@@ -285,18 +285,18 @@ var vm=new Vue({
 	mounted: function (){
 		var arr=[];
 		var k=0;
-		var img1=new Image();
-		img1.src="file/images/bg3.png";
-
-		var img2=new Image();
-		img2.src="file/images/bg2.png";
-
-		var img3=new Image();
-		img3.src="file/images/bg1.png";
-
-		var img4=new Image();
-		img4.src="file/images/bg.jpg";
-		arr=[img1,img2,img3,img4];
+		//输出图片实例数组
+		function oImg(urlArr){
+			var oarr=[];
+			for (var i = 0,len=urlArr.length; i < len; i++) {
+				var img=new Image();
+				img.src=urlArr[i];
+				oarr.push(img);
+			}
+			return oarr;
+		}
+		arr=oImg(["file/images/bg3.png","file/images/bg2.png","file/images/bg1.png","file/images/bg.jpg"]);
+		
 		var self=this;
 		for (var i = 0,len=arr.length; i < len; i++) {
 			arr[i].onload=function (){
@@ -306,5 +306,7 @@ var vm=new Vue({
 				}
 			}
 		}
+		//刷新回到首页
+		this.$router.push('/');
 	}
 })
