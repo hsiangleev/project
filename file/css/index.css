@@ -182,11 +182,11 @@
 				opacity: 0;
 			}
 			15%{
-				top: 8%;
+				top: 0.3rem;
 				opacity: 1;
 			}
 			100%{
-				top: 8%;
+				top: 0.3rem;
 				opacity: 1;
 			}
 		}
@@ -326,14 +326,18 @@
 			width: 0.6rem;
 		}
 		.content{
-			height: 3rem;
-			top: 40%;
+			height: 2.7rem;
+			top: 2.5rem;
+			bottom: auto;
 		}
 		.works .works-content{
 			width: 72%;
 		}
 		.works .imgContent{
 			width: 45%;
+		}
+		.works span{
+			bottom: 0.4rem;
 		}
 	}
 	/************** 内容开始 ***************/

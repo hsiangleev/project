@@ -272,6 +272,11 @@ var vm=new Vue({
 				background: "url('file/images/bg.jpg') no-repeat",
 				backgroundSize: "100% 100%"
 			}
+		},
+		//取消手机下拉默认事件
+		cancelDefault: function (e){
+			e.stopPropagation();
+			e.preventDefault();
 		}
 	},
 	//背景图片预加载
