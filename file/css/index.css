@@ -227,19 +227,27 @@
 		/* top: 0px; */
 		left: 0px;
 	}
-	.works button{
+	.works span{
 		position: absolute;
 		bottom: 0.1rem;
 		left: 50%;
 		margin-left: -0.6rem;
 		width: 0.6rem;
 		height: 0.3rem;
-	}
-	.works button:last-of-type{
-		margin-left: 0rem;
-	}
-	.works button.noAllow{
+		line-height: 0.3rem;
+		color: #ddd;
+		border-radius: 0.1rem;
+		text-align: center;
+		font-size: 0.14rem;
+		cursor: pointer;
+		user-select: none;
 		background-color: rgba(200,200,200,0.8);
+	}
+	.works span:last-of-type{
+		margin-left: 0.05rem;
+	}
+	.works span.noAllow{
+		background-color: rgba(120,120,120,0.8);
 		cursor: not-allowed;
 	}
 	.works .imgContent{

@@ -39,8 +39,8 @@
 			</ul>
 			<div class="works-content">
 				<!-- 点击下一页让imgBox的top减小两个imgBox的高度 -->
-				<button @click="slideUp" :class="{noAllow: btn1Style}">上一页</button>
-				<button @click="slideDown" :class="{noAllow: btn2Style}">下一页</button>
+				<span @click="slideUp" :class="{noAllow: btn1Style}">上一页</span>
+				<span @click="slideDown" :class="{noAllow: btn2Style}">下一页</span>
 				<!-- 游戏 -->
 				<div class="imgBoxFather">	<!-- 存放imgBox的容器，实现单击下一页下滑 -->
 					<div class="imgBox clearfix" v-if="imgArr.isShow[0]" :style="imgStyle">
