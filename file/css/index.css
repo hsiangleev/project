@@ -326,8 +326,8 @@
 			width: 0.6rem;
 		}
 		.content{
-			height: 2.7rem;
-			top: 2.1rem;
+			height: 2.4rem;
+			top: 2rem;
 			bottom: auto;
 		}
 		.works .works-content{
@@ -337,7 +337,7 @@
 			width: 45%;
 		}
 		.works span{
-			bottom: 0.4rem;
+			bottom: 0.3rem;
 		}
 	}
 	/************** 内容开始 ***************/

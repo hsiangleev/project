@@ -276,6 +276,9 @@ var vm=new Vue({
 		//取消手机下拉默认事件
 		cancelDefault: function (e){
 			e.preventDefault();
+			document.onmousemove=function (e){
+				e.preventDefault();
+			}
 		}
 	},
 	//背景图片预加载
