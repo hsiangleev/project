@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<!-- <link rel="icon" href="images/lee.ico" > -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <title>凉宫</title>
+	<link rel="stylesheet" href="file/css/index.css">
+</head>
+<body>
+	<div id="box">
+		<div class="bg1"></div>
+		<div class="bg2"></div>
+		<div class="bg3"></div>
+		<div class="nav">
+			<ul class="clearfix">
+				<!-- 根据Vue2.0官方文档关于父子组件通讯的原则，父组件通过prop传递数据给子组件，子组件触发事件给父组件。但父组件想在子组件上监听自己的click的话，需要加上native修饰符。所以如果在想要在router-link上添加事件的话需要@click.native这样写 -->
+				<li v-for="(val,index) in navArr"><router-link :to="val.url" @click.native="changeClass(index)" :class="{current: val.hasCurrent}">{{ val.text }}</router-link></li>
+				<li><a href="https://github.com/hsiangleev" target="_blank">github</a></li>
+				<li><a href="http://www.cnblogs.com/hsianglee/" target="_blank">博客</a></li>
+			</ul>
+		</div>
+		<router-view class="content"></router-view>
+	</div>
+	<!-- 首页 -->
+	<!--- 。。。。。。。。。。。。。 首页 。。。。。。。。。。。。。。。。 -->
+	<template id="home">
+		<div>
+			呵呵呵
+		</div>
+	</template>
+	<!--- 。。。。。。。。。。。。。 首页。。。。。。。。。。。。。。。。 -->
+
+	<!--- 。。。。。。。。。。。。。 作品展示 。。。。。。。。。。。。。。。。 -->
+	<template id="works">
+		<div class="works">
+			<ul>
+				<li v-for="(val,index) in liArr" :class="{current: val.hasCurrent}" @click="toggleCurrent(index)">{{ val.text }}</li>
+			</ul>
+			<div class="works-content">
+				<!-- 点击下一页让imgBox的top减小两个imgBox的高度 -->
+				<button @click="slideUp" :class="{noAllow: btn1Style}">上一页</button>
+				<button @click="slideDown" :class="{noAllow: btn2Style}">下一页</button>
+				<!-- 游戏 -->
+				<div class="imgBoxFather">	<!-- 存放imgBox的容器，实现单击下一页下滑 -->
+					<div class="imgBox clearfix" v-if="imgArr.isShow[0]" :style="imgStyle">
+						<div class="imgContent" v-for="val in imgArr.gameArr">
+							<a :href="val.url" target="_blank">
+								<p>{{ val.text }}</p>
+								<img :src="val.imgUrl" alt="">
+							</a>
+						</div>
+					</div>
+					<!-- 组件 -->
+					<div class="imgBox" v-if="imgArr.isShow[1]" :style="imgStyle">
+						<div class="imgContent" v-for="val in imgArr.compArr">
+							<a :href="val.url" target="_blank">
+								<p>{{ val.text }}</p>
+								<img :src="val.imgUrl" alt="">
+							</a>
+						</div>
+					</div>
+					<!-- boot -->
+					<div class="imgBox" v-if="imgArr.isShow[2]" :style="imgStyle">
+						<div class="imgContent" v-for="val in imgArr.bootArr">
+							<a :href="val.url" target="_blank">
+								<p>{{ val.text }}</p>
+								<img :src="val.imgUrl" alt="">
+							</a>
+						</div>
+					</div>
+					<!-- 小项目 -->
+					<div class="imgBox" v-if="imgArr.isShow[3]" :style="imgStyle">
+						<div class="imgContent" v-for="val in imgArr.projArr">
+							<p>{{ val.text }}</p>
+						</div>
+					</div>
+				</div>
+					
+			</div>
+		</div>
+	</template>
+	<!--- 。。。。。。。。。。。。。 作品展示 。。。。。。。。。。。。。。。。 -->
+
+	<!--- 。。。。。。。。。。。。。 个人信息 。。。。。。。。。。。。。。。。 -->
+	<template id="info">
+		<div>
+			啦啦啦
+		</div>
+	</template>
+	<!--- 。。。。。。。。。。。。。 个人信息 。。。。。。。。。。。。。。。。 -->
+
+	<script src="file/js/vue.js"></script>
+	<script src="file/js/vue-router.js"></script>
+	<script src="file/js/index.js"></script>
+</body>
+</html>

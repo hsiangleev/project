@@ -1,0 +1,282 @@
+	html,
+	body{
+		padding: 0;
+		margin: 0;
+		width: 100%;
+		height: 100%;
+		background-color: #ddd;
+		font-size: 100px;
+	}
+	p,h1,h2,h3,h4,h5,h6{
+		padding: 0;
+		margin: 0;
+	}
+	a{
+		text-decoration: none;
+		color: #f69;
+	}
+	ul{
+		padding: 0;
+		margin: 0;
+		list-style: none;
+	}
+	#box{
+		max-width: 8rem;
+		height: 100%;
+		margin: 0 auto;
+		background: url("../images/bg.jpg") no-repeat;
+		background-size: 100% 100%;
+		position: relative;
+	}
+	/************** css初始动画 ***************/
+	.bg1{
+		width: 100%;
+		height: 2.5rem;
+		position: absolute;
+		top: 0;
+		left: 0;
+		background: url("../images/bg1.png") no-repeat top 0px left 0px;
+		background-size: 100% 2.5rem;
+		opacity: 0;
+		animation: bg1 2s 1 linear forwards;
+	}
+	.bg2{
+		width: 100%;
+		height: 2.5rem;
+		position: absolute;
+		top: 0;
+		left: 0;
+		background: url("../images/bg2.png") no-repeat top 0px left 0px;
+		background-size: 100% 2.5rem;
+		opacity: 0;
+		animation: bg2 2s 1 linear forwards;
+	}
+	.bg3{
+		width: 100%;
+		height: 3.5rem;
+		position: absolute;
+		top: 0;
+		left: 0;
+		background: url("../images/bg3.png") no-repeat top 1.1rem left 0px;
+		background-size: 100% 2.5rem;
+		opacity: 0;
+		animation: bg3 2s 1 linear forwards;
+	}
+	@keyframes bg1{
+		0%{
+			opacity: 0;
+		}
+		60%{
+			opacity: 0;
+		}
+		100%{
+			opacity: 1;
+		}
+	}
+	@keyframes bg2{
+		0%{
+			opacity: 0;
+		}
+		35%{
+			opacity: 0;
+		}
+		60%{
+			opacity: 1;
+		}
+		100%{
+			opacity: 1;
+		}
+	}
+	@keyframes bg3{
+		0%{
+			opacity: 0;
+		}
+		15%{
+			opacity: 0;
+		}
+		35%{
+			opacity: 1;
+		}
+		100%{
+			opacity: 1;
+		}
+	}
+	@keyframes bg{
+		0%{
+			top: 0;
+			opacity: 0;
+		}
+		15%{
+			top: 39%;
+			opacity: 1;
+		}
+		100%{
+			top: 39%;
+			opacity: 1;
+		}
+	}
+	/************** css初始动画 ***************/
+
+	/************** 导航条开始 ***************/
+	.nav{
+		font-size: 0.16rem;
+		position: absolute;
+		width: 71.4%;
+		left: 14.3%;
+		color: #f69;
+		box-sizing: border-box;
+		padding-left: 0.1rem;
+		background-color: rgba(60, 60, 60, 0.6);
+		opacity: 0;
+		animation: bg 2s 1 linear forwards;
+	}
+	.nav li{
+		float: left;
+		height: 0.3rem;
+		line-height: 0.3rem;
+	}
+	.nav li::after{
+		content: "|";
+		color: #ccc;
+		margin: 0 0.1rem;
+	}
+	.nav li:last-of-type::after{
+		content: "";
+	}
+	.nav a{
+		display: inline-block;
+		height: 100%;
+		padding: 0 0.1rem;
+		border-radius: 0.05rem;
+	}
+	.nav a:hover{
+		background-color: #f69;
+		color: #fff;
+	}
+	.current{
+		background-color: #f69;
+		color: #fff;
+	}
+	/************** 导航条结束 ***************/
+
+	.clearfix::after{
+		content: "";
+		display: block;
+		overflow: hidden;
+		height: 0;
+		clear: both;
+	}
+	.clearfix{
+		zoom: 1;
+	}
+	/************** 内容开始 ***************/
+	.content{
+		font-size: 0.16rem;
+		width: 71.4%;
+		height: 2.7rem;
+		position: absolute;
+		bottom: 0;
+		left: 14.3%;
+		box-sizing: border-box;
+		padding-left: 0.1rem;
+	}
+	/************** 内容结束 ***************/
+	/************** 内容开始 ***************/
+	.works ul{
+		width: 0.8rem;
+		position: absolute;
+		top: 0;
+		right: 0;
+		font-size: 0.14rem;
+	}
+	.works li{
+		height: 0.3rem;
+		margin: 0.1rem 0;
+		line-height: 0.3rem;
+		text-align: center;
+		color: #fff;
+		cursor: pointer;
+		user-select: none;
+		background-color: #6f9;
+	}
+	.works li.current{
+		background-color: #f69;
+		color: #fff;
+	}
+	.works .works-content{
+		width: 80%;
+		height: 100%;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		overflow: hidden;
+		border: 1px solid #ddd;
+	}
+	.works .imgBoxFather{
+		width: 100%;
+		height: 70%;
+		overflow: hidden;
+		border: 1px solid #ccc;
+		position: absolute;
+		top: 0px;
+		left: 0px;
+	}
+	.works .imgBox{
+		width: 100%;
+		position: absolute;
+		/* top: 0px; */
+		left: 0px;
+	}
+	.works button{
+		position: absolute;
+		bottom: 0.1rem;
+		left: 50%;
+		margin-left: -0.6rem;
+		width: 0.6rem;
+		height: 0.3rem;
+	}
+	.works button:last-of-type{
+		margin-left: 0rem;
+	}
+	.works button.noAllow{
+		background-color: rgba(200,200,200,0.8);
+		cursor: not-allowed;
+	}
+	.works .imgContent{
+		width: 30%;
+		height: 0.8rem;
+		border: 1px solid #ddd;
+		float: left;
+		margin-left: 2%;
+		margin-top: 2%;
+		position: relative;
+		box-shadow: 0px 0px 3px #ddd;
+	}
+	.works .imgContent a{
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+	}
+	.works .imgContent img{
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+	}
+	.works .imgContent p{
+		height: 0.2rem;
+		width: 100%;
+		text-align: center;
+		font-size: 0.14rem;
+		color: #fff;
+		line-height: 0.2rem;
+		background-color: rgba(160, 160, 160, 0.6);
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		z-index: 1;
+	}
+	/************** 内容开始 ***************/
