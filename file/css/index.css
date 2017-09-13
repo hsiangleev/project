@@ -38,7 +38,7 @@
 		background: url("../images/bg1.png") no-repeat top 0px left 0px;
 		background-size: 100% 2.5rem;
 		opacity: 0;
-		animation: bg1 2s 1 linear forwards;
+		animation: bg1 2s 0.5s 1 linear forwards;
 	}
 	.bg2{
 		width: 100%;
@@ -49,7 +49,7 @@
 		background: url("../images/bg2.png") no-repeat top 0px left 0px;
 		background-size: 100% 2.5rem;
 		opacity: 0;
-		animation: bg2 2s 1 linear forwards;
+		animation: bg2 2s 0.5s 1 linear forwards;
 	}
 	.bg3{
 		width: 100%;
@@ -60,7 +60,7 @@
 		background: url("../images/bg3.png") no-repeat top 1.1rem left 0px;
 		background-size: 100% 2.5rem;
 		opacity: 0;
-		animation: bg3 2s 1 linear forwards;
+		animation: bg3 2s 0.5s 1 linear forwards;
 	}
 	@keyframes bg1{
 		0%{
@@ -128,7 +128,7 @@
 		padding-left: 0.1rem;
 		background-color: rgba(60, 60, 60, 0.6);
 		opacity: 0;
-		animation: bg 2s 1 linear forwards;
+		animation: bg 2s 0.5s 1 linear forwards;
 	}
 	.nav li{
 		float: left;
