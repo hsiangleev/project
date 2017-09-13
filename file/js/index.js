@@ -32,81 +32,81 @@ var temWorks={
 					{
 						text: "飞翔的小鸟",
 						url: "http://hsianglee.top/game/fly/",
-						imgUrl: "file/images/1-fly.PNG"
+						imgUrl: "file/images/1-fly.png"
 					},
 					{
 						text: "矩形躲避",
 						url: "http://hsianglee.top/game/line/",
-						imgUrl: "file/images/1-line.PNG"
+						imgUrl: "file/images/1-line.png"
 					},
 					{
 						text: "简易贪吃蛇",
 						url: "http://hsianglee.top/game/snake/",
-						imgUrl: "file/images/1-snake.PNG"
+						imgUrl: "file/images/1-snake.png"
 					},
 					{
 						text: "js图片拼图",
 						url: "http://hsianglee.top/game/puzzle/",
-						imgUrl: "file/images/1-puzzle.PNG"
+						imgUrl: "file/images/1-puzzle.png"
 					},
 					{
 						text: "vue小拼图",
 						url: "http://hsianglee.top/vue/puzzleVue.html",
-						imgUrl: "file/images/1-puzzleVue.PNG"
+						imgUrl: "file/images/1-puzzleVue.png"
 					},
 				],
 				compArr: [
 					{
 						text: "弹出层",
 						url: "http://hsianglee.top/component/alert.html",
-						imgUrl: "file/images/none.PNG"
+						imgUrl: "file/images/none.png"
 					},
 					{
 						text: "加载动画",
 						url: "http://hsianglee.top/component/load.html",
-						imgUrl: "file/images/none.PNG"
+						imgUrl: "file/images/none.png"
 					},
 					{
 						text: "导航条",
 						url: "http://hsianglee.top/component/nav.html",
-						imgUrl: "file/images/none.PNG"
+						imgUrl: "file/images/none.png"
 					},
 					{
 						text: "滚动条",
 						url: "http://hsianglee.top/component/scroll.html",
-						imgUrl: "file/images/none.PNG"
+						imgUrl: "file/images/none.png"
 					},
 					{
 						text: "轮播图",
 						url: "http://hsianglee.top/component/carousel.html",
-						imgUrl: "file/images/none.PNG"
+						imgUrl: "file/images/none.png"
 					},
 					{
 						text: "验证码",
 						url: "http://hsianglee.top/component/randomCode.html",
-						imgUrl: "file/images/none.PNG"
+						imgUrl: "file/images/none.png"
 					},
 					{
 						text: "验证码",
 						url: "http://hsianglee.top/component/randomCode.html",
-						imgUrl: "file/images/none.PNG"
+						imgUrl: "file/images/none.png"
 					},
 				],
 				bootArr: [
 					{
 						text: "WordPress",
 						url: "http://hsianglee.top/bootstrap/wp/",
-						imgUrl: "file/images/none.PNG"
+						imgUrl: "file/images/none.png"
 					},
 					{
 						text: "ghost",
 						url: "http://hsianglee.top/bootstrap/ghost/",
-						imgUrl: "file/images/none.PNG"
+						imgUrl: "file/images/none.png"
 					},
 					{
 						text: "xfc",
 						url: "http://hsianglee.top/bootstrap/xfc/",
-						imgUrl: "file/images/none.PNG"
+						imgUrl: "file/images/none.png"
 					},
 				],
 				projArr: [
