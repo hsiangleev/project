@@ -275,7 +275,6 @@ var vm=new Vue({
 		},
 		//取消手机下拉默认事件
 		cancelDefault: function (e){
-			e.stopPropagation();
 			e.preventDefault();
 		}
 	},
