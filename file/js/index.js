@@ -31,22 +31,22 @@ var temWorks={
 				gameArr: [
 					{
 						text: "飞翔的小鸟",
-						url: "http://hsianglee.top/fly/",
+						url: "http://hsianglee.top/game/fly/",
 						imgUrl: "file/images/1-fly.PNG"
 					},
 					{
 						text: "矩形躲避",
-						url: "http://hsianglee.top/line/",
+						url: "http://hsianglee.top/game/line/",
 						imgUrl: "file/images/1-line.PNG"
 					},
 					{
 						text: "简易贪吃蛇",
-						url: "http://hsianglee.top/snake/",
+						url: "http://hsianglee.top/game/snake/",
 						imgUrl: "file/images/1-snake.PNG"
 					},
 					{
 						text: "js图片拼图",
-						url: "http://hsianglee.top/puzzle/",
+						url: "http://hsianglee.top/game/puzzle/",
 						imgUrl: "file/images/1-puzzle.PNG"
 					},
 					{
