@@ -229,7 +229,11 @@ var vm=new Vue({
 			},
 		],
 		oldIndex: 0,
-		
+		bg1: {},
+		bg2: {},
+		bg3: {},
+		nav: {},
+		oBox: {}
 	},
 	methods: {
 		changeClass: function (index){
@@ -240,8 +244,56 @@ var vm=new Vue({
 				this.navArr[this.oldIndex].hasCurrent=false;
 				this.oldIndex=index;
 			}
-				
-			
+		},
+		loadImg: function (){
+			this.bg1={
+				background: "url('file/images/bg1.png') no-repeat top 0px left 0px",
+				backgroundSize: "100% 2.5rem",
+				animation: "bg1 2s 1 linear forwards"
+			};
+			this.bg2={
+				background: "url('file/images/bg2.png') no-repeat top 0px left 0px",
+				backgroundSize: "100% 2.5rem",
+				animation: "bg1 1.5s 1 linear forwards"
+			};
+			this.bg3={
+				background: "url('file/images/bg3.png') no-repeat top 1.1rem left 0px",
+				backgroundSize: "100% 2.5rem",
+				animation: "bg1 1s 1 linear forwards"
+			};
+			this.nav={
+				animation: " bg 2s 1 linear forwards"
+			};
+			this.oBox={
+				background: "url('file/images/bg.jpg') no-repeat",
+				backgroundSize: "100% 100%"
+			}
+		}
+	},
+	//背景图片预加载
+	mounted: function (){
+		var arr=[];
+		var k=0;
+		var img1=new Image();
+		img1.src="file/images/bg3.png";
+
+		var img2=new Image();
+		img2.src="file/images/bg2.png";
+
+		var img3=new Image();
+		img3.src="file/images/bg1.png";
+
+		var img4=new Image();
+		img4.src="file/images/bg.jpg";
+		arr=[img1,img2,img3,img4];
+		var self=this;
+		for (var i = 0,len=arr.length; i < len; i++) {
+			arr[i].onload=function (){
+				k++;
+				if(k>=arr.length){
+					self.loadImg();
+				}
+			}
 		}
 	}
 })

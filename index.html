@@ -8,11 +8,11 @@
 	<link rel="stylesheet" href="file/css/index.css">
 </head>
 <body>
-	<div id="box">
-		<div class="bg1"></div>
-		<div class="bg2"></div>
-		<div class="bg3"></div>
-		<div class="nav">
+	<div id="box" :style="oBox">
+		<div class="bg1" :style="bg1"></div>
+		<div class="bg2" :style="bg2"></div>
+		<div class="bg3" :style="bg3"></div>
+		<div class="nav" :style="nav">
 			<ul class="clearfix">
 				<!-- 根据Vue2.0官方文档关于父子组件通讯的原则，父组件通过prop传递数据给子组件，子组件触发事件给父组件。但父组件想在子组件上监听自己的click的话，需要加上native修饰符。所以如果在想要在router-link上添加事件的话需要@click.native这样写 -->
 				<li v-for="(val,index) in navArr"><router-link :to="val.url" @click.native="changeClass(index)" :class="{current: val.hasCurrent}">{{ val.text }}</router-link></li>
