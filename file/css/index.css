@@ -182,11 +182,11 @@
 				opacity: 0;
 			}
 			15%{
-				top: 15%;
+				top: 8%;
 				opacity: 1;
 			}
 			100%{
-				top: 15%;
+				top: 8%;
 				opacity: 1;
 			}
 		}
@@ -327,7 +327,7 @@
 		}
 		.content{
 			height: 3rem;
-			top: 45%;
+			top: 40%;
 		}
 		.works .works-content{
 			width: 72%;
