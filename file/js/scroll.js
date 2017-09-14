@@ -104,11 +104,6 @@
 			})
 
 
-			//阻止手机滚动默认行为
-			EventUtil.addHandler(document,"touchstart", function (e){
-				var e=event || window.event;
-				EventUtil.preventDefault(e);
-			})
 			//手机小球拖拽滚动
 			EventUtil.addHandler(rollingBall,"touchstart", function (e){
 				var e=event || window.event;
