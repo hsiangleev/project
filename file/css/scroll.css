@@ -1,0 +1,51 @@
+
+#c-scroll{
+	background-color: transparent;
+	position: absolute;
+	width: 80%;
+	height: 110%;
+	top: -0.7rem;
+	left: 0;
+	border: 1px solid #ccc;
+	border-right: none;
+}
+#c-scrollBar{
+	width: 4px;
+	height: 100%;
+	background-color: #aaa;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+#rollingBall{
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	cursor: pointer;
+	position: absolute;
+	left: -8px;
+	top: 0px;
+	background-color: #aaa;
+}
+#c-content{
+	box-sizing: border-box;
+	overflow: hidden;
+	width: 90%;
+	height: 90%;
+	position: absolute;
+	top: 3%;
+	left: 5%;
+}
+#c-content-body{
+	width: 100%;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	color: #eee;
+}
+@media screen and (max-width: 768px){
+	#c-scroll{
+		top: 0;
+		width: 95%;
+	}
+}

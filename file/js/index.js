@@ -203,7 +203,10 @@ var router=new VueRouter({
 			path: "/info",
 			name: "info",
 			component: {
-				template: "#info"
+				template: "#info",
+				mounted: function (){
+					c_scroll();
+				}
 			}
 		}
 	]

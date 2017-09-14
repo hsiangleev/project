@@ -1,8 +1,6 @@
 /*
-* c_scroll(x,y)
-* 例: c_scroll(300,400)
-* x: 最外层盒子宽度(必需)
-* y: 最外层盒子高度(必需)
+* c_scroll()
+* 例: c_scroll()
 * 
 * 1.可拖动小球上下移动
 * 2.点击滚动条移动
@@ -24,16 +22,17 @@
 * 
 **/
 (function (w){
-	var box=document.getElementById("c-scroll");
-	var scrollBar=document.getElementById("c-scrollBar");
-	var rollingBall=document.getElementById("rollingBall");
-	var content=document.getElementById("c-content");
-	var contentBody=document.getElementById("c-content-body");
-	//当前滚轮位置
-	var step=0;
-	function c_scroll(w,h){
-		box.style.width=w+"px";
-		box.style.height=h+"px";
+	function c_scroll(){
+		var box=document.getElementById("c-scroll");
+		var scrollBar=document.getElementById("c-scrollBar");
+		var rollingBall=document.getElementById("rollingBall");
+		var content=document.getElementById("c-content");
+		var contentBody=document.getElementById("c-content-body");
+
+		var vueCon=document.querySelector(".content");
+
+		//当前滚轮位置
+		var step=0;
 		//小球可移动区域距离
 		var ballMaxHeight=scrollBar.offsetHeight-rollingBall.offsetHeight;
 		// 内容可移动区域距离
@@ -46,13 +45,12 @@
 			var y1=e.clientY-box.offsetTop-rollingBall.offsetTop;
 			EventUtil.addHandler(document,"mousemove",pcScroll);
 			EventUtil.addHandler(document,"mouseup",function (){
-				EventUtil.removeHandler(document,"mousemove",pcScroll)
+				EventUtil.removeHandler(document,"mousemove",pcScroll);
 			})
 			function pcScroll(){
 				var e=event || window.event;
 				//小球距离父盒子滚动条顶部的高度
 				var y2=e.clientY-box.offsetTop-y1;
-				
 				if(y2<0){
 					y2=0;
 				}
@@ -74,7 +72,7 @@
 		//点击滚动
 		EventUtil.addHandler(scrollBar,"click",function (e){
 			var e=event || window.event;
-			var y1=e.clientY-box.offsetTop;
+			var y1=e.clientY-box.offsetTop-vueCon.offsetTop;
 			if(y1>ballMaxHeight){
 				y1=ballMaxHeight;
 			}
@@ -84,6 +82,7 @@
 			animate(contentBody,"top",-y4);
 
 			step=y1;
+
 		})
 
 		//滚轮滚动
@@ -253,7 +252,7 @@
 		}
 	}
 
-	w.c_scroll=function (x,y){
-		return c_scroll(x,y);
+	w.c_scroll=function (){
+		return c_scroll();
 	};
 })(window)
