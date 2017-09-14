@@ -17,7 +17,11 @@
 	right: 0;
 	top: 0;
 	/* 移动端点击闪烁 */
-	-webket-tab-highlight-color: rgba(0, 0, 0, 0);
+	-webkit-touch-callout: none; 
+	-webkit-text-size-adjust: none; 
+	-webkit-user-select: none; 
+	-webkit-highlight: none; 
+	-webkit-tap-highlight-color: rgba(0,0,0,0); 
 }
 #rollingBall{
 	width: 20px;
