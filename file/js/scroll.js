@@ -37,152 +37,159 @@
 		var ballMaxHeight=scrollBar.offsetHeight-rollingBall.offsetHeight;
 		// 内容可移动区域距离
 		var contentMaxHeight=contentBody.offsetHeight-content.offsetHeight;
+		//若内容高度超过父盒子的高度才可以滚动
+		if(contentMaxHeight>0){
+			//拖拽滚动
+			EventUtil.addHandler(rollingBall,"mousedown",function (e){
+				var e=event || window.event;
+				//点击处距离小球顶部高度
+				var y1=e.clientY-box.offsetTop-rollingBall.offsetTop;
+				EventUtil.addHandler(document,"mousemove",pcScroll);
+				EventUtil.addHandler(document,"mouseup",function (){
+					EventUtil.removeHandler(document,"mousemove",pcScroll);
+				})
+				function pcScroll(){
+					var e=event || window.event;
+					//小球距离父盒子滚动条顶部的高度
+					var y2=e.clientY-box.offsetTop-y1;
+					if(y2<0){
+						y2=0;
+					}
+					if(y2>ballMaxHeight){
+						y2=ballMaxHeight;
+					}
+					rollingBall.style.top=y2+"px";
+					//比率，距离父盒子高度/可移动区域距离
+					var bite=y2/ballMaxHeight;
+					var y4=bite*contentMaxHeight;
+					contentBody.style.top=-1*y4+"px";
 
-		//拖拽滚动
-		EventUtil.addHandler(rollingBall,"mousedown",function (e){
-			var e=event || window.event;
-			//点击处距离小球顶部高度
-			var y1=e.clientY-box.offsetTop-rollingBall.offsetTop;
-			EventUtil.addHandler(document,"mousemove",pcScroll);
-			EventUtil.addHandler(document,"mouseup",function (){
-				EventUtil.removeHandler(document,"mousemove",pcScroll);
+					step=y2;
+					//让被选文字清除。
+	                window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
+				}
 			})
-			function pcScroll(){
+				
+			//点击滚动
+			EventUtil.addHandler(scrollBar,"click",function (e){
 				var e=event || window.event;
-				//小球距离父盒子滚动条顶部的高度
-				var y2=e.clientY-box.offsetTop-y1;
-				if(y2<0){
-					y2=0;
+				var y1=e.clientY-box.offsetTop-vueCon.offsetTop;
+				if(y1>ballMaxHeight){
+					y1=ballMaxHeight;
 				}
-				if(y2>ballMaxHeight){
-					y2=ballMaxHeight;
-				}
-				rollingBall.style.top=y2+"px";
-				//比率，距离父盒子高度/可移动区域距离
-				var bite=y2/ballMaxHeight;
+				animate(rollingBall,"top",y1);
+				var bite=y1/ballMaxHeight;
 				var y4=bite*contentMaxHeight;
-				contentBody.style.top=-1*y4+"px";
+				animate(contentBody,"top",-y4);
 
-				step=y2;
-				//让被选文字清除。
-                window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
-			}
-		})
-			
-		//点击滚动
-		EventUtil.addHandler(scrollBar,"click",function (e){
-			var e=event || window.event;
-			var y1=e.clientY-box.offsetTop-vueCon.offsetTop;
-			if(y1>ballMaxHeight){
-				y1=ballMaxHeight;
-			}
-			animate(rollingBall,"top",y1);
-			var bite=y1/ballMaxHeight;
-			var y4=bite*contentMaxHeight;
-			animate(contentBody,"top",-y4);
+				step=y1;
 
-			step=y1;
+			})
 
-		})
-
-		//滚轮滚动
-		EventUtil.addHandler(box,"mousewheel",function (e){
-			var e=event || window.event;
-			//e.wheelDelta: 每向下移动一次为-120
-			step-=e.wheelDelta/5;
-			if(step>ballMaxHeight){
-				step=ballMaxHeight;
-			}
-			if(step<0){
-				step=0;
-			}
-			animate(rollingBall,"top",step);
-			var bite=step/ballMaxHeight;
-			var y4=bite*contentMaxHeight;
-			animate(contentBody,"top",-y4);
-		})
-
-
-		//手机小球拖拽滚动
-		EventUtil.addHandler(rollingBall,"touchstart", function (e){
-			var e=event || window.event;
-			//阻止手机滚动默认行为
-			EventUtil.preventDefault(e);
-			//点击处距离小球顶部高度
-			var y1=e.touches[0].clientY-box.offsetTop-rollingBall.offsetTop;
-			
-			EventUtil.addHandler(document,"touchmove",phoneTouch);
-
-			EventUtil.addHandler(rollingBall,"touchend",function (e){
-				EventUtil.removeHandler(document,"touchmove", phoneTouch)
-			});
-			//阻止冒泡
-			EventUtil.stopPropagation(e);
-
-			function phoneTouch(){
+			//滚轮滚动
+			EventUtil.addHandler(box,"mousewheel",function (e){
 				var e=event || window.event;
-				//小球距离父盒子滚动条顶部的高度
-				var y2=e.touches[0].clientY-box.offsetTop-y1;
-
-				if(y2<0){
-					y2=0;
+				//e.wheelDelta: 每向下移动一次为-120
+				step-=e.wheelDelta/5;
+				if(step>ballMaxHeight){
+					step=ballMaxHeight;
 				}
-				if(y2>ballMaxHeight){
-					y2=ballMaxHeight;
+				if(step<0){
+					step=0;
 				}
-				rollingBall.style.top=y2+"px";
-				//比率，距离父盒子高度/可移动区域距离
-				var bite=y2/ballMaxHeight;
+				animate(rollingBall,"top",step);
+				var bite=step/ballMaxHeight;
 				var y4=bite*contentMaxHeight;
-				contentBody.style.top=-1*y4+"px";
+				animate(contentBody,"top",-y4);
+			})
 
 
-				step=y2;
-				//让被选文字清除。
-	            window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
-			}
-		});
-
-		//手机手势滚动
-		EventUtil.addHandler(box,"touchstart", function (e){
-			var e=event || window.event;
-			var y1=e.touches[0].pageY;
 			//阻止手机滚动默认行为
-			EventUtil.preventDefault(e);
-			EventUtil.addHandler(document,"touchmove",phoneTouch);
+			EventUtil.addHandler(document,"touchstart", function (e){
+				var e=event || window.event;
+				EventUtil.preventDefault(e);
+			})
+			//手机小球拖拽滚动
+			EventUtil.addHandler(rollingBall,"touchstart", function (e){
+				var e=event || window.event;
+				//阻止手机滚动默认行为
+				EventUtil.preventDefault(e);
+				//点击处距离小球顶部高度
+				var y1=e.touches[0].clientY-box.offsetTop-rollingBall.offsetTop;
+				
+				EventUtil.addHandler(document,"touchmove",phoneTouch);
 
-			EventUtil.addHandler(box,"touchend",function (e){
-				EventUtil.removeHandler(document,"touchmove", phoneTouch)
+				EventUtil.addHandler(rollingBall,"touchend",function (e){
+					EventUtil.removeHandler(document,"touchmove", phoneTouch)
+				});
+				//阻止冒泡
+				EventUtil.stopPropagation(e);
+
+				function phoneTouch(){
+					var e=event || window.event;
+					//小球距离父盒子滚动条顶部的高度
+					var y2=e.touches[0].clientY-box.offsetTop-y1;
+
+					if(y2<0){
+						y2=0;
+					}
+					if(y2>ballMaxHeight){
+						y2=ballMaxHeight;
+					}
+					rollingBall.style.top=y2+"px";
+					//比率，距离父盒子高度/可移动区域距离
+					var bite=y2/ballMaxHeight;
+					var y4=bite*contentMaxHeight;
+					contentBody.style.top=-1*y4+"px";
+
+
+					step=y2;
+					//让被选文字清除。
+		            window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
+				}
 			});
 
-			function phoneTouch(){
+			//手机手势滚动
+			EventUtil.addHandler(box,"touchstart", function (e){
 				var e=event || window.event;
-				var y2=e.touches[0].pageY;
-				//y2-y1: 滚动的距离
-				//speed: 减慢速度
-				var speed=(y2-y1)/10;
-				//currentHeight: contentBody当前距离父盒子高度
-				var currentHeight=contentBody.offsetTop;
-				var y3=currentHeight+speed;
-				if(y3<-contentMaxHeight){
-					y3=-contentMaxHeight;
-				}
-				if(y3>0){
-					y3=0;
-				}
-				contentBody.style.top=y3+"px";
-				//比率，距离父盒子高度/可移动区域距离
-				var bite=y3/contentMaxHeight;
-				var y4=bite*ballMaxHeight;
-				rollingBall.style.top=-1*y4+"px";
+				var y1=e.touches[0].pageY;
+				//阻止手机滚动默认行为
+				EventUtil.preventDefault(e);
+				EventUtil.addHandler(document,"touchmove",phoneTouch);
 
-				step=y2;
-				//让被选文字清除。
-	            window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
-			}
-		});
+				EventUtil.addHandler(box,"touchend",function (e){
+					EventUtil.removeHandler(document,"touchmove", phoneTouch)
+				});
 
-	}
+				function phoneTouch(){
+					var e=event || window.event;
+					var y2=e.touches[0].pageY;
+					//y2-y1: 滚动的距离
+					//speed: 减慢速度
+					var speed=(y2-y1)/10;
+					//currentHeight: contentBody当前距离父盒子高度
+					var currentHeight=contentBody.offsetTop;
+					var y3=currentHeight+speed;
+					if(y3<-contentMaxHeight){
+						y3=-contentMaxHeight;
+					}
+					if(y3>0){
+						y3=0;
+					}
+					contentBody.style.top=y3+"px";
+					//比率，距离父盒子高度/可移动区域距离
+					var bite=y3/contentMaxHeight;
+					var y4=bite*ballMaxHeight;
+					rollingBall.style.top=-1*y4+"px";
+
+					step=y2;
+					//让被选文字清除。
+		            window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
+				}
+			});
+
+		}
+	}	
 	//单属性缓动动画
 	function animate(ele,attr,target){
 		clearInterval(ele.timer);

@@ -2,9 +2,9 @@
 #c-scroll{
 	background-color: transparent;
 	position: absolute;
-	width: 80%;
+	width: 100%;
 	height: 110%;
-	top: -0.7rem;
+	top: -0.6rem;
 	left: 0;
 	border: 1px solid #ccc;
 	border-right: none;
@@ -46,6 +46,6 @@
 @media screen and (max-width: 768px){
 	#c-scroll{
 		top: 0;
-		width: 95%;
+		height: 100%;
 	}
 }
