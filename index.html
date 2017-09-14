@@ -28,9 +28,9 @@
 		<div class="nav" :style="nav">
 			<ul class="clearfix">
 				<!-- 根据Vue2.0官方文档关于父子组件通讯的原则，父组件通过prop传递数据给子组件，子组件触发事件给父组件。但父组件想在子组件上监听自己的click的话，需要加上native修饰符。所以如果在想要在router-link上添加事件的话需要@click.native这样写 -->
-				<li v-for="(val,index) in navArr"><router-link :to="val.url" @click.native="changeClass(index)" :class="{current: val.hasCurrent}">{{ val.text }}</router-link></li>
-				<li><a href="https://github.com/hsiangleev" target="_blank">github</a></li>
-				<li><a href="http://www.cnblogs.com/hsianglee/" target="_blank">博客</a></li>
+				<li v-for="(val,index) in navArr"><router-link :to="val.url" replace @click.native="changeClass(index)" :class="{current: val.hasCurrent}">{{ val.text }}</router-link></li>
+				<li><a href="https://github.com/hsiangleev">github</a></li>
+				<li><a href="http://www.cnblogs.com/hsianglee/">博客</a></li>
 			</ul>
 		</div>
 		<router-view class="content" v-if="isLoading"></router-view>
@@ -63,7 +63,7 @@
 				<div class="imgBoxFather">	<!-- 存放imgBox的容器，实现单击下一页下滑 -->
 					<div class="imgBox clearfix" v-if="imgArr.isShow[0]" :style="imgStyle">
 						<div class="imgContent" v-for="val in imgArr.gameArr">
-							<a :href="val.url" target="_blank">
+							<a :href="val.url">
 								<p>{{ val.text }}</p>
 								<img :src="val.imgUrl" alt="">
 							</a>
@@ -72,7 +72,7 @@
 					<!-- 组件 -->
 					<div class="imgBox" v-if="imgArr.isShow[1]" :style="imgStyle">
 						<div class="imgContent" v-for="val in imgArr.compArr">
-							<a :href="val.url" target="_blank">
+							<a :href="val.url">
 								<p>{{ val.text }}</p>
 								<img :src="val.imgUrl" alt="">
 							</a>
@@ -81,7 +81,7 @@
 					<!-- boot -->
 					<div class="imgBox" v-if="imgArr.isShow[2]" :style="imgStyle">
 						<div class="imgContent" v-for="val in imgArr.bootArr">
-							<a :href="val.url" target="_blank">
+							<a :href="val.url">
 								<p>{{ val.text }}</p>
 								<img :src="val.imgUrl" alt="">
 							</a>
