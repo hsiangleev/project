@@ -6,9 +6,21 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
     <title>凉宫</title>
 	<link rel="stylesheet" href="file/css/index.css">
+	<link rel="stylesheet" href="file/css/loading.css">
 </head>
 <body>
-	<div id="box" :style="oBox" @touchstar="cancelDefault">
+	<div id="box" :style="oBox">
+		<!-- ****************loading动画 ************************-->
+		<div id="c-load" v-if="!isLoading">
+			<span class="top"></span>
+			<span class="right"></span>
+			<span class="bottom"></span>
+			<span class="left"></span>
+			<div id="c-red"></div>
+			<div id="c-orange"></div>
+			<div id="c-white"></div>
+		</div>	
+		<!-- ****************loading动画 ************************-->
 		<div class="bg1" :style="bg1"></div>
 		<div class="bg2" :style="bg2"></div>
 		<div class="bg3" :style="bg3"></div>
@@ -20,7 +32,7 @@
 				<li><a href="http://www.cnblogs.com/hsianglee/" target="_blank">博客</a></li>
 			</ul>
 		</div>
-		<router-view class="content"></router-view>
+		<router-view class="content" v-if="isLoading"></router-view>
 	</div>
 	<!-- 首页 -->
 	<!--- 。。。。。。。。。。。。。 首页 。。。。。。。。。。。。。。。。 -->

@@ -25,6 +25,7 @@ var temWorks={
 					hasCurrent: false
 				},
 			],
+			//.current样式初始所在li的index
 			oldIndex: 0,
 			imgArr: {
 				isShow: [true,false,false,false],
@@ -124,9 +125,11 @@ var temWorks={
 					},
 				],
 			},
+			//下一页初始高度
 			imgStyle: {
 				top: "0rem"
 			},
+			//按钮样式
 			btn1Style: true,
 			btn2Style: false,
 		}
@@ -237,7 +240,8 @@ var vm=new Vue({
 		bg2: {},
 		bg3: {},
 		nav: {},
-		oBox: {}
+		oBox: {},
+		isLoading: false,
 	},
 	methods: {
 		changeClass: function (index){
@@ -250,6 +254,7 @@ var vm=new Vue({
 			}
 		},
 		loadImg: function (){
+			//加载完成显示动画
 			this.bg1={
 				background: "url('file/images/bg1.png') no-repeat top 0px left 0px",
 				backgroundSize: "100% 2.5rem",
@@ -272,6 +277,8 @@ var vm=new Vue({
 				background: "url('file/images/bg.jpg') no-repeat",
 				backgroundSize: "100% 100%"
 			}
+			//加载完成显示组件
+			this.isLoading=true;
 		}
 	},
 	//背景图片预加载
