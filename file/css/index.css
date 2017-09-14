@@ -6,6 +6,7 @@
 		height: 100%;
 		background-color: #ddd;
 		font-size: 100px;
+		font-family: Tahoma,Arial,"Hiragino Sans GB",simsun,sans-serif;
 	}
 	p,h1,h2,h3,h4,h5,h6{
 		padding: 0;

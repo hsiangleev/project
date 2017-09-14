@@ -11,7 +11,7 @@
 <body>
 	<div id="box" :style="oBox">
 		<!-- ****************loading动画 ************************-->
-		<div id="c-load" v-if="!isLoading">
+		<div id="c-load" v-if="isLoading">
 			<span class="top"></span>
 			<span class="right"></span>
 			<span class="bottom"></span>
@@ -19,6 +19,7 @@
 			<div id="c-red"></div>
 			<div id="c-orange"></div>
 			<div id="c-white"></div>
+			<p>loading...</p>
 		</div>	
 		<!-- ****************loading动画 ************************-->
 		<div class="bg1" :style="bg1"></div>
@@ -36,7 +37,7 @@
 	</div>
 	<!-- 首页 -->
 	<!--- 。。。。。。。。。。。。。 首页 。。。。。。。。。。。。。。。。 -->
-	<template id="home">
+	<script type="text/template" id="home">
 		<div class="home">
 			<div class="textBox clearfix">   
 				<p>你很有骨气</p>
@@ -45,11 +46,11 @@
 				<p>可是你懒啊</p>
 			</div>
 		</div>
-	</template>
+	</script>
 	<!--- 。。。。。。。。。。。。。 首页。。。。。。。。。。。。。。。。 -->
 
 	<!--- 。。。。。。。。。。。。。 作品展示 。。。。。。。。。。。。。。。。 -->
-	<template id="works">
+	<script type="text/template" id="works">
 		<div class="works">
 			<ul>
 				<li v-for="(val,index) in liArr" :class="{current: val.hasCurrent}" @click="toggleCurrent(index)">{{ val.text }}</li>
@@ -96,15 +97,21 @@
 					
 			</div>
 		</div>
-	</template>
+	</script>
 	<!--- 。。。。。。。。。。。。。 作品展示 。。。。。。。。。。。。。。。。 -->
 
 	<!--- 。。。。。。。。。。。。。 个人信息 。。。。。。。。。。。。。。。。 -->
-	<template id="info">
+	<!-- ie11不支持template模板 -->
+	<!-- <template id="info">	
 		<div>
 			啦啦啦
 		</div>
-	</template>
+	</template> -->
+	<script type="text/template" id="info">
+		<div>
+			啦啦啦
+		</div>
+	</script>
 	<!--- 。。。。。。。。。。。。。 个人信息 。。。。。。。。。。。。。。。。 -->
 
 	<script src="file/js/vue.js"></script>

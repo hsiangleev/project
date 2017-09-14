@@ -210,7 +210,7 @@ var router=new VueRouter({
 })
 var vm=new Vue({
 	el: "#box",
-	router,
+	router: router,
 	data: {
 		navArr: [
 			{
