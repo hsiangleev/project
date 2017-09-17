@@ -32,96 +32,89 @@ var temWorks={
 				gameArr: [
 					{
 						text: "飞翔的小鸟",
-						url: "http://hsianglee.top/game/fly/",
+						url: "https://hsiangleev.github.io/game-flyBird/index.html",
 						imgUrl: "file/images/1-fly.png"
 					},
 					{
 						text: "矩形躲避",
-						url: "http://hsianglee.top/game/line/",
+						url: "https://hsiangleev.github.io/game-line/index.html",
 						imgUrl: "file/images/1-line.png"
 					},
 					{
 						text: "简易贪吃蛇",
-						url: "http://hsianglee.top/game/snake/",
+						url: "https://hsiangleev.github.io/game-snake/index.html",
 						imgUrl: "file/images/1-snake.png"
 					},
 					{
 						text: "js图片拼图",
-						url: "http://hsianglee.top/game/puzzle/",
+						url: "https://hsiangleev.github.io/game-puzzle/index.html",
 						imgUrl: "file/images/1-puzzle.png"
 					},
 					{
 						text: "vue小拼图",
-						url: "http://hsianglee.top/vue/puzzleVue.html",
+						url: "https://hsiangleev.github.io/vue-puzzle/index.html",
 						imgUrl: "file/images/1-puzzleVue.png"
 					},
 				],
 				compArr: [
 					{
 						text: "弹出层",
-						url: "http://hsianglee.top/component/alert.html",
+						url: "https://hsiangleev.github.io/component-alert/alert.html",
 						imgUrl: "file/images/none.png"
 					},
 					{
 						text: "加载动画",
-						url: "http://hsianglee.top/component/load.html",
+						url: "https://hsiangleev.github.io/component-load/load.html",
 						imgUrl: "file/images/none.png"
 					},
 					{
 						text: "导航条",
-						url: "http://hsianglee.top/component/nav.html",
+						url: "https://hsiangleev.github.io/component-nav/nav.html",
 						imgUrl: "file/images/none.png"
 					},
 					{
 						text: "滚动条",
-						url: "http://hsianglee.top/component/scroll.html",
+						url: "https://hsiangleev.github.io/component-scroll/scroll.html",
 						imgUrl: "file/images/none.png"
 					},
 					{
 						text: "轮播图",
-						url: "http://hsianglee.top/component/carousel.html",
+						url: "https://hsiangleev.github.io/component-carousel/carousel.html",
 						imgUrl: "file/images/none.png"
 					},
 					{
 						text: "验证码",
-						url: "http://hsianglee.top/component/randomCode.html",
+						url: "https://hsiangleev.github.io/component-randomCode/randomCode.html",
 						imgUrl: "file/images/none.png"
 					},
 					{
 						text: "验证码",
-						url: "http://hsianglee.top/component/randomCode.html",
+						url: "https://hsiangleev.github.io/component-randomCode/randomCode.html",
 						imgUrl: "file/images/none.png"
 					},
 				],
 				bootArr: [
 					{
 						text: "WordPress",
-						url: "http://hsianglee.top/bootstrap/wp/",
+						url: "https://hsiangleev.github.io/mybootstrap/wp/",
 						imgUrl: "file/images/none.png"
 					},
 					{
 						text: "ghost",
-						url: "http://hsianglee.top/bootstrap/ghost/",
+						url: "https://hsiangleev.github.io/mybootstrap/ghost/",
 						imgUrl: "file/images/none.png"
 					},
 					{
 						text: "xfc",
-						url: "http://hsianglee.top/bootstrap/xfc/",
+						url: "https://hsiangleev.github.io/mybootstrap/xfc/",
 						imgUrl: "file/images/none.png"
 					},
 				],
 				projArr: [
 					{
-						text: "嘿嘿嘿嘿"
-					},
-					{
-						text: "嘿嘿嘿嘿"
-					},
-					{
-						text: "嘿嘿嘿嘿"
-					},
-					{
-						text: "嘿嘿嘿嘿"
+						text: "js综合",
+						url: "https://hsiangleev.github.io/smallProject-fgm/",
+						imgUrl: "file/images/none.png"
 					},
 				],
 			},

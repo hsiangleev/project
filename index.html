@@ -91,7 +91,10 @@
 					<!-- 小项目 -->
 					<div class="imgBox" v-if="imgArr.isShow[3]" :style="imgStyle">
 						<div class="imgContent" v-for="val in imgArr.projArr">
-							<p>{{ val.text }}</p>
+							<a :href="val.url">
+								<p>{{ val.text }}</p>
+								<img :src="val.imgUrl" alt="">
+							</a>
 						</div>
 					</div>
 				</div>
