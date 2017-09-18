@@ -348,6 +348,9 @@
 		.works span{
 			bottom: 0.3rem;
 		}
+		.works .imgContent img{
+			transition: none;
+		}
 		.works .imgContent img:hover{
 			-webkit-clip-path: none;
 			clip-path: none;
