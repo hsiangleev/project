@@ -308,6 +308,12 @@
 		height: 100%;
 		top: 0;
 		left: 0;
+		/* 菱形变矩形动画 */
+		clip-path: polygon(50% 0,100% 50%,50% 100%,0 50%);
+		transition: all 1s;
+	}
+	.works .imgContent img:hover{
+		clip-path: polygon(0 0,100% 0,100% 100%,0 100%);
 	}
 	.works .imgContent p{
 		height: 0.2rem;
