@@ -118,9 +118,42 @@
 					<div id="rollingBall"></div>
 				</div>
 				<div id="c-content">
-					<div id="c-content-body">
+					<div id="c-content-body" class="clearfix">
 						<!-- 存放内容 -->
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et error eveniet voluptas veniam doloribus! Fugiat incidunt, iste laboriosam reiciendis. Laborum laboriosam, recusandae possimus accusamus neque, ut nam dolorem perferendis. Commodi quibusdam odit harum, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et error eveniet voluptas veniam doloribus! Fugiat incidunt, iste laboriosam reiciendis. Laborum laboriosam, recusandae possimus accusamus neque, ut nam dolorem perferendis. Commodi quibusdam odit harum, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et error eveniet voluptas veniam doloribus! Fugiat incidunt, iste laboriosam reiciendis. Laborum laboriosam, recusandae possimus accusamus neque, ut nam dolorem perferendis. Commodi quibusdam odit harum, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et error eveniet voluptas veniam doloribus! Fugiat incidunt, iste laboriosam reiciendis. Laborum laboriosam, recusandae possimus accusamus neque, ut nam dolorem perferendis. Commodi quibusdam odit harum, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et error eveniet voluptas veniam doloribus! Fugiat incidunt, iste laboriosam reiciendis. Laborum laboriosam, recusandae possimus accusamus neque, ut nam dolorem perferendis. Commodi quibusdam odit harum, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et error eveniet voluptas veniam doloribus! Fugiat incidunt, iste laboriosam reiciendis. Laborum laboriosam, recusandae possimus accusamus neque, ut nam dolorem perferendis. Commodi quibusdam odit harum, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et error eveniet voluptas veniam doloribus! Fugiat incidunt, iste laboriosam reiciendis. Laborum laboriosam, recusandae possimus accusamus neque, ut nam dolorem perferendis. Commodi quibusdam odit harum, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et error eveniet voluptas veniam doloribus! Fugiat incidunt, iste laboriosam reiciendis. Laborum laboriosam, recusandae possimus accusamus neque, ut nam dolorem perferendis. Commodi quibusdam odit harum, 
+						<div class="left">
+							<div class="imgbox">
+								<img :src="photo" alt="">
+							</div>
+							<div class="oheader">
+								<h2>李祥</h2>
+								<h5>心有猛虎，细嗅蔷薇</h5>
+							</div>
+							<ul class="myinfo">
+								<li v-for="val in myinfo">{{ val }}</li>
+							</ul>
+							<div class="skillBox" v-for="val in skillBox">
+								<div class="header">
+									{{ val.header }}
+								</div>
+								<p>{{ val.content }}</p>
+							</div>
+						</div>
+						<div class="right">
+							<div class="header">
+								<h2>李祥</h2>
+								<h5>心有猛虎，细嗅蔷薇</h5>
+							</div>
+							<div class="right-box" v-for="val in rightBox">
+								<div class="title">
+									{{ val.title }}
+								</div>
+								<div class="right-content">
+									<ul>
+										<li v-for="value in val.content">{{ value.title }} <span>{{ value.text }}</span></li>
+									</ul>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
