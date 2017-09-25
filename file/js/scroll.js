@@ -1,6 +1,6 @@
 /*
-* c_scroll()
-* 例: c_scroll()
+* 在vue原型中添加c_scroll（）插件
+* 
 * 
 * 1.可拖动小球上下移动
 * 2.点击滚动条移动
@@ -21,7 +21,7 @@
 * 
 * 
 **/
-(function (w){
+(function (vue){
 	function c_scroll(){
 		var box=document.getElementById("c-scroll");
 		var scrollBar=document.getElementById("c-scrollBar");
@@ -254,7 +254,7 @@
 		}
 	}
 
-	w.c_scroll=function (){
+	vue.prototype.c_scroll=function (){
 		return c_scroll();
 	};
-})(window)
+})(Vue)
