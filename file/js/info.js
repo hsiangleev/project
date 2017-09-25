@@ -12,7 +12,7 @@
 					},
 					{
 						header: "兴趣爱好",
-						content: "看史书，打乒乓球，玩玩游戏"
+						content: "看书，打乒乓球，玩游戏"
 					},
 				],
 				myinfo: ["年龄：23岁","所在地：安徽省池州市","工作经验：无"],
@@ -27,11 +27,11 @@
 							},
 							{
 								title: "职业类型: ",
-								text: ""
+								text: "前端开发"
 							},
 							{
 								title: "意向城市: ",
-								text: "上海"
+								text: "杭州, 上海"
 							},
 							{
 								title: "薪资要求: ",
@@ -62,7 +62,7 @@
 						content: [
 							{
 								title: "",
-								text: "性格有点内向、乐观上进、有爱心并善于施教并行；自学前端10个月左右熟练使用html5, css3, 并能用原生javascript编写一般性的网站需求, 熟练使用jQuery，了解vuejs, ajax, json等，会用简单性的mysql语句,简单了解php"
+								text: "性格有点内向、乐观上进、有爱心并善于施教并行；自学前端10个月左右熟练使用html5, css3, 并能用原生javascript编写一般性的网站需求, 熟练使用jQuery，了解vuejs, github, ajax, json等，会用简单性的mysql语句,简单了解php"
 							},
 						]
 					},
