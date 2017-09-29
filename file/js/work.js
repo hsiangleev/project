@@ -113,6 +113,11 @@
 							url: "https://hsiangleev.github.io/smallProject-fgm/",
 							imgUrl: "file/images/none.png"
 						},
+						{
+							text: "眼镜在线试戴",
+							url: "https://hsiangleev.github.io/proj-eyeglass/",
+							imgUrl: "file/images/none.png"
+						},
 					],
 				},
 				//下一页初始高度
